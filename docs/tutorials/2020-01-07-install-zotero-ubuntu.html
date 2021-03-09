@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2D2D2D" />
   
-  <title>philmikejones :: Download and extract</title>
+  <title>philmikejones :: Install Zotero on Ubuntu</title>
   
 
   <link rel="icon" type="image/png" sizes="32x32" href="../_static/img/favicon-32x32.png">
@@ -52,20 +52,22 @@
 
       <div id="main-content-container">
         <div id="main-content-header">
-          <h1>Download and extract</h1>
+          <h1>Install Zotero on Ubuntu</h1>
         </div>
         <div id="main-content">
           
-  <p>Instructions to install Zotero 5 in Ubuntu Bionic Beaver 18.04 LTS, as
+  <div class="section" id="install-zotero-on-ubuntu">
+<h1>Install Zotero on Ubuntu<a class="headerlink" href="#install-zotero-on-ubuntu" title="Permalink to this headline">¶</a></h1>
+<p>Instructions to install Zotero 5 in Ubuntu Bionic Beaver 18.04 LTS, as
 of January 2020.</p>
 <p>I follow the <a class="reference external" href="https://www.zotero.org/support/installation">installation instructions</a> to install Zotero, but there’s perhaps not enough detail if you’re new to Ubuntu (or, like me, you just forget!).</p>
 <div class="section" id="download-and-extract">
-<h1>Download and extract<a class="headerlink" href="#download-and-extract" title="Permalink to this headline">¶</a></h1>
+<h2>Download and extract<a class="headerlink" href="#download-and-extract" title="Permalink to this headline">¶</a></h2>
 <p>First, download Zotero 5.0 tarball from <a class="reference external" href="https://www.zotero.org/download/">https://www.zotero.org/download/</a>
 then extract the archive using your archive manager.</p>
 </div>
 <div class="section" id="create-a-directory">
-<h1>Create a directory<a class="headerlink" href="#create-a-directory" title="Permalink to this headline">¶</a></h1>
+<h2>Create a directory<a class="headerlink" href="#create-a-directory" title="Permalink to this headline">¶</a></h2>
 <p>Now you need to make a directory to install it in to. For ease you can
 just make this in your home directory, but I do like to keep software
 out of my home directory and use <code class="docutils literal notranslate"><span class="pre">/opt</span></code> like the installation
@@ -79,7 +81,7 @@ and type:</p>
 <p>and type your password.</p>
 </div>
 <div class="section" id="set-owner-and-permissions-for-the-directory">
-<h1>Set owner and permissions for the directory<a class="headerlink" href="#set-owner-and-permissions-for-the-directory" title="Permalink to this headline">¶</a></h1>
+<h2>Set owner and permissions for the directory<a class="headerlink" href="#set-owner-and-permissions-for-the-directory" title="Permalink to this headline">¶</a></h2>
 <p>Next change the owner of the <code class="docutils literal notranslate"><span class="pre">zotero</span></code> directory you’ve just created so
 you can access it without root:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chown user:group /opt/zotero
@@ -99,7 +101,7 @@ it but not write to it and bodge it up):</p>
 <code class="docutils literal notranslate"><span class="pre">/opt/zotero</span></code>).</p>
 </div>
 <div class="section" id="copy-the-files-across">
-<h1>Copy the files across<a class="headerlink" href="#copy-the-files-across" title="Permalink to this headline">¶</a></h1>
+<h2>Copy the files across<a class="headerlink" href="#copy-the-files-across" title="Permalink to this headline">¶</a></h2>
 <p>Copy the extracted files to <code class="docutils literal notranslate"><span class="pre">/opt/zotero</span></code> using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r path/to/extracted/files/* /opt/zotero
 </pre></div>
@@ -109,7 +111,7 @@ this directory”. The <code class="docutils literal notranslate"><span class="p
 folders and folder contents). Thanks to Chris Erkal for the reminder.</p>
 </div>
 <div class="section" id="create-menu-item">
-<h1>Create menu item<a class="headerlink" href="#create-menu-item" title="Permalink to this headline">¶</a></h1>
+<h2>Create menu item<a class="headerlink" href="#create-menu-item" title="Permalink to this headline">¶</a></h2>
 <p>So that you can run Zotero from your menu you need to run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/zotero/set_launcher_icon
 </pre></div>
@@ -137,10 +139,11 @@ instructions:</p>
 </div>
 </div>
 <div class="section" id="log-out-and-back-in">
-<h1>Log out and back in<a class="headerlink" href="#log-out-and-back-in" title="Permalink to this headline">¶</a></h1>
+<h2>Log out and back in<a class="headerlink" href="#log-out-and-back-in" title="Permalink to this headline">¶</a></h2>
 <p>This might be an <code class="docutils literal notranslate"><span class="pre">xfce</span></code>/<code class="docutils literal notranslate"><span class="pre">xubuntu</span></code> quirk, but for the menu item to
 work I have to log out and log back in of my account. Once I’ve done
 this I can now open Zotero from the menu.</p>
+</div>
 </div>
 
 
@@ -167,12 +170,7 @@ this I can now open Zotero from the menu.</p>
     <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Download and extract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-a-directory">Create a directory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#set-owner-and-permissions-for-the-directory">Set owner and permissions for the directory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#copy-the-files-across">Copy the files across</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-menu-item">Create menu item</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#log-out-and-back-in">Log out and back in</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install Zotero on Ubuntu</a></li>
 </ul>
 
   

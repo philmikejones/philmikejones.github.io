@@ -1,3 +1,7 @@
+##############################
+Install Zotero on Ubuntu
+##############################
+
 Instructions to install Zotero 5 in Ubuntu Bionic Beaver 18.04 LTS, as
 of January 2020.
 
