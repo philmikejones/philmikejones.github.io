@@ -11,29 +11,17 @@ Phil Mike Jones
    :caption: Contents:
 
 
-I write code to analyse spatial and non–spatial data sets. You can see
-some of my `code projects <https://github.com/philmikejones>`__ on
-GitHub.
-   
-I have a PhD in human geography. You can `read the
-manuscript <http://etheses.whiterose.ac.uk/id/eprint/19283>`__ or `view
-the source code <https://github.com/philmikejones/thesis>`__.
+   about.rst
 
-I’ve written several related `tutorials <tutorials/>`__ and `blog
-posts <blog/>`__ you can read, use, and share for free (`CC
-BY-NC <https://creativecommons.org/licenses/by-nc/4.0/>`__). My
-`stats101 <https://philmikejones.github.io/stats101/>`__ website might
-also be useful if you want an introduction to statistics (written with
-Python).
 
-I am currently a lecturer in policing (research methods) at the
-`University of Derby <https://www.derby.ac.uk/>`__. Previously I worked
-on the “`Long-term impacts of ‘Thatcherism’: crime, politics and
-inequality <https://www.derby.ac.uk/research/showcase/thatcherism-and-crime/>`__”
-project.
+I write code to analyse spatial and non-spatial data sets.
+I typically use Python, R, and Linux.
+I've written a number of tutorials on these topics that were originally to remind me how to do things, but which you're welcome to use if they're any help to you.
 
-`Read my bio > <bio/>`__
-   
+You can use and share these tutorials for free (`CC BY-NC <https://creativecommons.org/licenses/by-nc/4.0/>`__).
+I try to ensure they're as accurate as possible and hope they're helpful, but make no guarantees that they're correct; use at your own risk.
+Always be careful copying and pasting code from an internet source before running it on your machine.
+
 
 Indices and tables
 ==================
