@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>philmikejones :: Download and extract</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+
+  <link rel="stylesheet" href="../_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="../index.html"><img src="../_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>philmikejones Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Download and extract</h1>
+        </div>
+        <div id="main-content">
+          
+  <p>Instructions to install Zotero 5 in Ubuntu Bionic Beaver 18.04 LTS, as
+of January 2020.</p>
+<p>I follow the <a class="reference external" href="https://www.zotero.org/support/installation">installation instructions</a> to install Zotero, but there’s perhaps not enough detail if you’re new to Ubuntu (or, like me, you just forget!).</p>
+<div class="section" id="download-and-extract">
+<h1>Download and extract<a class="headerlink" href="#download-and-extract" title="Permalink to this headline">¶</a></h1>
+<p>First, download Zotero 5.0 tarball from <a class="reference external" href="https://www.zotero.org/download/">https://www.zotero.org/download/</a>
+then extract the archive using your archive manager.</p>
+</div>
+<div class="section" id="create-a-directory">
+<h1>Create a directory<a class="headerlink" href="#create-a-directory" title="Permalink to this headline">¶</a></h1>
+<p>Now you need to make a directory to install it in to. For ease you can
+just make this in your home directory, but I do like to keep software
+out of my home directory and use <code class="docutils literal notranslate"><span class="pre">/opt</span></code> like the installation
+instructions suggest.</p>
+<p>Make a directory called <code class="docutils literal notranslate"><span class="pre">zotero</span></code> in <code class="docutils literal notranslate"><span class="pre">/opt</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">/opt/zotero</span></code>).
+You may find you need to be root to do this initially so open a terminal
+and type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir /opt/zotero
+</pre></div>
+</div>
+<p>and type your password.</p>
+</div>
+<div class="section" id="set-owner-and-permissions-for-the-directory">
+<h1>Set owner and permissions for the directory<a class="headerlink" href="#set-owner-and-permissions-for-the-directory" title="Permalink to this headline">¶</a></h1>
+<p>Next change the owner of the <code class="docutils literal notranslate"><span class="pre">zotero</span></code> directory you’ve just created so
+you can access it without root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chown user:group /opt/zotero
+</pre></div>
+</div>
+<p>(where <code class="docutils literal notranslate"><span class="pre">user</span></code> is you and <code class="docutils literal notranslate"><span class="pre">group</span></code> is an optional group name (possibly
+<code class="docutils literal notranslate"><span class="pre">staff</span></code> or similar)). You may also want to change the
+<a class="reference external" href="http://linuxcommand.org/lc3_lts0090.php">permissions</a> so that only
+you can write to this folder. For example, I want read, write, and
+execute permissions for myself (<code class="docutils literal notranslate"><span class="pre">7</span></code>), read permission (<code class="docutils literal notranslate"><span class="pre">5</span></code>) for
+group, and no permissions for everyone else (<code class="docutils literal notranslate"><span class="pre">0</span></code>) (so others can read
+it but not write to it and bodge it up):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod <span class="m">750</span> -R /opt/zotero
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-R</span></code> does this recusively (i.e. all files and directories in
+<code class="docutils literal notranslate"><span class="pre">/opt/zotero</span></code>).</p>
+</div>
+<div class="section" id="copy-the-files-across">
+<h1>Copy the files across<a class="headerlink" href="#copy-the-files-across" title="Permalink to this headline">¶</a></h1>
+<p>Copy the extracted files to <code class="docutils literal notranslate"><span class="pre">/opt/zotero</span></code> using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r path/to/extracted/files/* /opt/zotero
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> is a wildcard and means, “copy all files and directories in
+this directory”. The <code class="docutils literal notranslate"><span class="pre">-r</span></code> means copy recursively (i.e. copy all
+folders and folder contents). Thanks to Chris Erkal for the reminder.</p>
+</div>
+<div class="section" id="create-menu-item">
+<h1>Create menu item<a class="headerlink" href="#create-menu-item" title="Permalink to this headline">¶</a></h1>
+<p>So that you can run Zotero from your menu you need to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/zotero/set_launcher_icon
+</pre></div>
+</div>
+<p>as suggested in the installation instructions. However, I find I also
+need to manually edit the <code class="docutils literal notranslate"><span class="pre">zotero.desktop</span></code> file to point to the
+correct directory. Open <code class="docutils literal notranslate"><span class="pre">/opt/zotero/zotero.desktop</span></code> in a text editor
+and change the line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="k">$(</span>readlink -f %k<span class="k">))</span><span class="s2">/zotero -url %U&quot;</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&quot;/opt/zotero/zotero -url %U&quot;</span>
+</pre></div>
+</div>
+<p>Before you create a symlink you may need to create the
+<code class="docutils literal notranslate"><span class="pre">~/.local/share/applications/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/.local/share/applications
+</pre></div>
+</div>
+<p>Then you can create your symlink as described in the installation
+instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-out-and-back-in">
+<h1>Log out and back in<a class="headerlink" href="#log-out-and-back-in" title="Permalink to this headline">¶</a></h1>
+<p>This might be an <code class="docutils literal notranslate"><span class="pre">xfce</span></code>/<code class="docutils literal notranslate"><span class="pre">xubuntu</span></code> quirk, but for the menu item to
+work I have to log out and log back in of my account. Once I’ve done
+this I can now open Zotero from the menu.</p>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download and extract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#create-a-directory">Create a directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#set-owner-and-permissions-for-the-directory">Set owner and permissions for the directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#copy-the-files-across">Copy the files across</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#create-menu-item">Create menu item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#log-out-and-back-in">Log out and back in</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="../_sources/tutorials/2020-01-07-install-zotero-ubuntu.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>
