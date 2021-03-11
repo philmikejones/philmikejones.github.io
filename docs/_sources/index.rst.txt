@@ -16,7 +16,7 @@ Always be careful copying and pasting code from an internet source before runnin
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
 
