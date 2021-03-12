@@ -23,6 +23,7 @@ Always be careful copying and pasting code from an internet source before runnin
 
    about.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
+   tutorials/2019-04-09-test-your-data.rst
 
 
 .. * :ref:`genindex`

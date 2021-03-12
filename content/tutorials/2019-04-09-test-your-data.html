@@ -1,0 +1,335 @@
+---
+title: "Test your data"
+author: "Phil Mike Jones"
+date: 2019-04-09
+categories: "tutorials"
+tags: ["r", "rstats", "test", "unit test", "testthat"]
+---
+
+
+
+<p>I’ve written and spoken before about how important it is to <a href="blog/unit-testing-in-r/">test your functions and data analysis scripts</a>. I decided to revisit these ideas and write this tutorial based on my recent experience of calculating the number of units of alcohol the panel members in the <a href="https://cls.ucl.ac.uk/cls-studies/">NCDS and BCS70 birth cohorts</a> drank at different time points. I initially thought this would be a straightforward mathematical calculation but this turned out to be vastly more complicated than I thought (it always does!). My tests of the data identified the problem (something I would likely have missed without them) and confirmed when I had solved it. I use <code>testthat</code> in <code>R</code> although the ideas are language–agnostic.</p>
+<!--more-->
+<p>I am currently using the NCDS and BCS70 birth cohort data sets to model alcohol consumption at different time points. Respondents were asked questions about the type and quantity of drinks they consumed in the past seven days, and we decided to convert these into just units of alcohol consumed to simplify the modelling. For example, at most time points cohort members were asked how many pints or glasses of beer, wine, and spirits they had consumed in the past seven days.</p>
+<p>For this example I’m going to take an extract from the BCS70 cohort in 1986 when they were aged 16, but the other time points and cohort raised very similar issues. I obviously can’t include actual BCS70 data as it is restricted (but if you’re a UK academic researcher you can download the <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=3535">BCS70 sixteen–year follow–up (1986)</a> yourself).</p>
+<p>I’ve taken a sample of 100 respondents and removed their given IDs and replaced these with just a unique integer. In all other respects I’ve constructed the example data to be as close to the original data as possible, including the proportion of completed/missing responses. You can <a href="https://philmikejones.me/tutorials/2019-04-09-test-your-data/bcs70.csv">download my example data</a> or load it directly into <code>R</code>.</p>
+<p>As with any script, first let’s load the packages we need:</p>
+<pre class="r"><code># if necessary run:
+# install.packages(c(&quot;readr&quot;, &quot;dplyr&quot;, &quot;testthat&quot;, &quot;usethis&quot;, &quot;tidyr&quot;))
+
+library(&quot;readr&quot;)
+library(&quot;dplyr&quot;)
+library(&quot;usethis&quot;)
+library(&quot;testthat&quot;)
+library(&quot;tidyr&quot;)</code></pre>
+<p>Now download the example data we’ll use:</p>
+<pre class="r"><code>url = &quot;https://philmikejones.me/tutorials/2019-04-09-test-your-data/bcs70.csv&quot;
+bcs70 = read_csv(url)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   bcsid = col_double(),
+##   days_drink = col_double(),
+##   beer = col_double(),
+##   cider = col_double(),
+##   sherry = col_double(),
+##   wine = col_double(),
+##   shandy = col_double(),
+##   spirits = col_double()
+## )</code></pre>
+<p>Let’s take a look at the top and bottom cases:</p>
+<pre class="r"><code>head(bcs70)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   bcsid days_drink  beer cider sherry  wine shandy spirits
+##   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1     1         NA    NA    NA     NA    NA     NA      NA
+## 2     2         NA    NA    NA     NA    NA     NA      NA
+## 3     3         NA    NA    NA     NA    NA     NA      NA
+## 4     4         NA    NA    NA     NA    NA     NA      NA
+## 5     5         NA    NA    NA     NA    NA     NA      NA
+## 6     6         NA    NA    NA     NA    NA     NA      NA</code></pre>
+<pre class="r"><code>tail(bcs70)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   bcsid days_drink  beer cider sherry  wine shandy spirits
+##   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1    95         NA    NA    NA     NA    NA     NA      NA
+## 2    96          1     0     0      0     2      0       0
+## 3    97         NA    NA    NA     NA    NA     NA      NA
+## 4    98          1     1     0      0     0      0       0
+## 5    99          1     1     0      0     0      0       0
+## 6   100         NA    NA    NA     NA    NA     NA      NA</code></pre>
+<p>Like all social science data it is a bit messy. We can see there are a lot of completely missing cases (<code>NA</code>) so these respondents exist at some point in the BCS70 but were not asked the alcohol questions (or any questions) in 1986. Those with answers look like they have a value in each question (even if it’s <code>0.0</code>). So let’s get to it.</p>
+<p>My approach here is to calculate the number of units of each drink type consumed and create a new variable for each. So for <code>beer</code> I will calculate <code>beer_units</code>, <code>cider</code> I will calculate <code>cider_units</code>, and so on. I will therefore be using <code>mutate()</code> in the <code>dplyr()</code> package for these calculations so that existing variables are not removed.</p>
+<pre class="r"><code>bcs70 =
+  bcs70 %&gt;%
+  mutate(
+    beer_units = beer * 2.3,
+    cider_units = cider * 2.6,
+    sherry_units = sherry * 1.8,
+    wine_units = wine * 1.8,
+    shandy_units = shandy * 2.3 / 2,
+    spirits_units = spirits * 1.0
+  )
+
+bcs70</code></pre>
+<pre><code>## # A tibble: 100 x 14
+##    bcsid days_drink  beer cider sherry  wine shandy spirits beer_units
+##    &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1         NA    NA    NA     NA    NA     NA      NA         NA
+##  2     2         NA    NA    NA     NA    NA     NA      NA         NA
+##  3     3         NA    NA    NA     NA    NA     NA      NA         NA
+##  4     4         NA    NA    NA     NA    NA     NA      NA         NA
+##  5     5         NA    NA    NA     NA    NA     NA      NA         NA
+##  6     6         NA    NA    NA     NA    NA     NA      NA         NA
+##  7     7         NA    NA    NA     NA    NA     NA      NA         NA
+##  8     8         NA    NA    NA     NA    NA     NA      NA         NA
+##  9     9          1     0     2      0     0      0       0          0
+## 10    10         NA    NA    NA     NA    NA     NA      NA         NA
+## # … with 90 more rows, and 5 more variables: cider_units &lt;dbl&gt;,
+## #   sherry_units &lt;dbl&gt;, wine_units &lt;dbl&gt;, shandy_units &lt;dbl&gt;,
+## #   spirits_units &lt;dbl&gt;</code></pre>
+<p>After I’ve calculated the units for each individual drink I’ll first try simply adding them up to arrive at the number of units consumed in the past seven days:</p>
+<pre class="r"><code>bcs70 =
+  bcs70 %&gt;%
+  mutate(
+    total_units =
+      beer_units + cider_units + sherry_units + wine_units +
+      shandy_units + spirits_units
+  )
+
+bcs70</code></pre>
+<pre><code>## # A tibble: 100 x 15
+##    bcsid days_drink  beer cider sherry  wine shandy spirits beer_units
+##    &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1         NA    NA    NA     NA    NA     NA      NA         NA
+##  2     2         NA    NA    NA     NA    NA     NA      NA         NA
+##  3     3         NA    NA    NA     NA    NA     NA      NA         NA
+##  4     4         NA    NA    NA     NA    NA     NA      NA         NA
+##  5     5         NA    NA    NA     NA    NA     NA      NA         NA
+##  6     6         NA    NA    NA     NA    NA     NA      NA         NA
+##  7     7         NA    NA    NA     NA    NA     NA      NA         NA
+##  8     8         NA    NA    NA     NA    NA     NA      NA         NA
+##  9     9          1     0     2      0     0      0       0          0
+## 10    10         NA    NA    NA     NA    NA     NA      NA         NA
+## # … with 90 more rows, and 6 more variables: cider_units &lt;dbl&gt;,
+## #   sherry_units &lt;dbl&gt;, wine_units &lt;dbl&gt;, shandy_units &lt;dbl&gt;,
+## #   spirits_units &lt;dbl&gt;, total_units &lt;dbl&gt;</code></pre>
+<div id="set-up-tests" class="section level2">
+<h2>Set up tests</h2>
+<p>To test to see if this worked I create a test suite. The easiest way to do this is with the <code>usethis</code> package:</p>
+<pre class="r"><code>use_test(&quot;test-bcs70&quot;)</code></pre>
+<p>This creates the necessary <code>tests/</code> directories and sets up a test file.</p>
+</div>
+<div id="test-calculations" class="section level2">
+<h2>Test calculations</h2>
+<p>First set up a context and load the necessary libraries, and as our first test I want to ensure the calculated <code>_units</code> variables are numeric (specifically double):</p>
+<pre class="r"><code>context(&quot;Test bcs70&quot;)
+
+test_that(&quot;Calculated units are numeric&quot;, {
+  expect_type(bcs70$beer_units, &quot;double&quot;)
+  expect_type(bcs70$cider_units, &quot;double&quot;)
+  expect_type(bcs70$sherry_units, &quot;double&quot;)
+  expect_type(bcs70$wine_units, &quot;double&quot;)
+  expect_type(bcs70$shandy_units, &quot;double&quot;)
+  expect_type(bcs70$spirits_units, &quot;double&quot;)
+  expect_type(bcs70$total_units, &quot;double&quot;)
+})</code></pre>
+<p>Next I want to test that the number of units calculated are plausible amounts. The minimum number of units should be <code>0.0</code>; it’s not possible to consume a negative number of units.</p>
+<pre class="r"><code>test_that(&quot;Calculated minimum units are 0.0&quot;, {
+  expect_gte(min(bcs70$beer_units), 0.0)
+  expect_gte(min(bcs70$cider_units), 0.0)
+  expect_gte(min(bcs70$sherry_units), 0.0)
+  expect_gte(min(bcs70$wine_units), 0.0)
+  expect_gte(min(bcs70$shandy_units), 0.0)
+  expect_gte(min(bcs70$spirits_units), 0.0)
+  expect_gte(min(bcs70$total_units), 0.0)
+})</code></pre>
+<p>If you run the code above, the tests will fail. This is because the <code>min</code> of a vector with an <code>NA</code> in is <code>NA</code>: i.e. the <code>min</code> of <code>bcs70$beer</code> is <code>NA</code> because there’s an <code>NA</code> in that vector:</p>
+<pre class="r"><code>is.na(min(bcs70$beer))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>This is something I forget all the time:</p>
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en">
+<p lang="en" dir="ltr">
+If I had a quid for every time I forgot that NA + 0.0 is NOT 0.0 I'd still be as forgetful but at least I'd be richer <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://t.co/iaUBCd87Rk">pic.twitter.com/iaUBCd87Rk</a>
+</p>
+— 🇪🇺🌍 Phil (<span class="citation">@philmikejones</span>) <a href="https://twitter.com/philmikejones/status/1107958263247720448?ref_src=twsrc%5Etfw">March 19, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So we must modify our tests to exclude the NAs with <a href="https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extremes"><code>na.rm = TRUE</code></a>:</p>
+<pre class="r"><code>test_that(&quot;Calculated minimum units are 0.0&quot;, {
+  expect_gte(min(bcs70$beer_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$cider_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$sherry_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$wine_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$shandy_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$spirits_units, na.rm = TRUE), 0.0)
+  expect_gte(min(bcs70$total_units, na.rm = TRUE), 0.0)
+})
+
+message(&quot;Tests pass&quot;)</code></pre>
+<pre><code>## Tests pass</code></pre>
+<p>So far, so good. (You don’t need to manually add the <code>message()</code> line under normal circumstances as you get feedback from <code>testthat</code> in interactive mode, but it’s useful here to see if the tests are successful).</p>
+<p>Now I want to test to see if the maximum number of units is sensible. I didn’t know in advance what the maximum number of drinks should be, but I worked out that 180 was a sensible maximum for the individual drinks (and therefore 1080 for the total); this is where your domain knowledge comes in:</p>
+<pre class="r"><code>test_that(&quot;Calculated maximum units are 180.0/1080.0&quot;, {
+  expect_lte(max(bcs70$beer_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$cider_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$sherry_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$wine_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$shandy_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$spirits_units, na.rm = TRUE), 180.0)
+  expect_lte(max(bcs70$total_units, na.rm = TRUE), 1080.0)
+})
+
+message(&quot;Tests pass&quot;)</code></pre>
+<pre><code>## Tests pass</code></pre>
+</div>
+<div id="test-for-missing-data" class="section level2">
+<h2>Test for missing data</h2>
+<p>Next I want to check that if there is data in any of the variables then I should have a value in <code>total</code>. For example if I have a non–missing value in <code>beer</code> there should also be a value in <code>total</code>. I wrote the following tests to check for this:</p>
+<pre class="r"><code>test_that(&quot;No missing data when there should be data&quot;, {
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$beer)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$cider)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$sherry)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$wine)])))
+  # expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$shandy)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$spirits)])))
+})</code></pre>
+<p>Each of these tests is essentially saying, “if there’s data in one of more of the drinks variables (<code>!is.na()</code> means ‘is not missing’) there should not be any missing data in <code>total_units</code>”. Notice though that I’ve commented out the <code>shandy</code> variable. That’s because for at least one respondent they gave a number of shandies consumed but one or more drinks were recorded as missing (and as we’ve seen above a number + <code>NA</code> is <code>NA</code>):</p>
+<pre class="r"><code>is.na(NA_real_ + 2.0)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can see this respondent by <code>filter</code>ing:</p>
+<pre class="r"><code>bcs70 %&gt;%
+  filter(!is.na(shandy)) %&gt;%
+  filter(is.na(total_units))</code></pre>
+<pre><code>## # A tibble: 1 x 15
+##   bcsid days_drink  beer cider sherry  wine shandy spirits beer_units
+##   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+## 1    69          1    NA    NA     NA    NA      2      NA         NA
+## # … with 6 more variables: cider_units &lt;dbl&gt;, sherry_units &lt;dbl&gt;,
+## #   wine_units &lt;dbl&gt;, shandy_units &lt;dbl&gt;, spirits_units &lt;dbl&gt;,
+## #   total_units &lt;dbl&gt;</code></pre>
+<p>How to deal with this case, and any others like it in the main dataset? I found the easiest way to solve this was to replace all <code>NA</code>s with <code>0.0</code> in the <code>_units</code> variables to ensure <code>total_units</code> summed correctly. The easiest way to do this is with <code>replace_na()</code> in the <code>tidyr</code> package. I don’t recommend modifying the original variable in place (e.g. <code>beer</code>) but as we’ve calculated <code>beer_units</code> we can correct this instead:</p>
+<pre class="r"><code>bcs70 =
+  bcs70 %&gt;%
+  replace_na(list(
+    beer_units = 0.0,
+    cider_units = 0.0,
+    sherry_units = 0.0,
+    wine_units = 0.0,
+    shandy_units = 0.0,
+    spirits_units = 0.0
+  )) %&gt;%
+  mutate(
+    total_units =
+      beer_units + cider_units + sherry_units + wine_units +
+      shandy_units + spirits_units
+  )
+
+bcs70</code></pre>
+<pre><code>## # A tibble: 100 x 15
+##    bcsid days_drink  beer cider sherry  wine shandy spirits beer_units
+##    &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1         NA    NA    NA     NA    NA     NA      NA          0
+##  2     2         NA    NA    NA     NA    NA     NA      NA          0
+##  3     3         NA    NA    NA     NA    NA     NA      NA          0
+##  4     4         NA    NA    NA     NA    NA     NA      NA          0
+##  5     5         NA    NA    NA     NA    NA     NA      NA          0
+##  6     6         NA    NA    NA     NA    NA     NA      NA          0
+##  7     7         NA    NA    NA     NA    NA     NA      NA          0
+##  8     8         NA    NA    NA     NA    NA     NA      NA          0
+##  9     9          1     0     2      0     0      0       0          0
+## 10    10         NA    NA    NA     NA    NA     NA      NA          0
+## # … with 90 more rows, and 6 more variables: cider_units &lt;dbl&gt;,
+## #   sherry_units &lt;dbl&gt;, wine_units &lt;dbl&gt;, shandy_units &lt;dbl&gt;,
+## #   spirits_units &lt;dbl&gt;, total_units &lt;dbl&gt;</code></pre>
+<p>Finally so that I knew which respondents genuinely didn’t drink and which were simply missing I replaced any <code>0.0</code> in <code>total_units</code> if <em>all</em> the drinks were missing.</p>
+<pre class="r"><code>bcs70 =
+  bcs70 %&gt;%
+  mutate(
+    total_units = if_else(
+      {
+        is.na(beer) &amp; is.na(cider) &amp; is.na(sherry) &amp;
+        is.na(wine) &amp; is.na(shandy) &amp; is.na(spirits)
+      },
+      NA_real_,
+      total_units
+    )
+  )</code></pre>
+<p>Let’s review case <code>69</code> (identified above) to see if <code>total_units</code> is correct:</p>
+<pre class="r"><code>bcs70 %&gt;%
+  filter(bcsid == 69) %&gt;%
+  select(beer, shandy, total_units)</code></pre>
+<pre><code>## # A tibble: 1 x 3
+##    beer shandy total_units
+##   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+## 1    NA      2         2.3</code></pre>
+<p>So even though there is missing data (<code>NA</code>) in <code>beer</code> the <code>total_units</code> has been summed correctly. And indeed if we run the tests now, they all pass (note you would not normally duplicate tests in a document, you’d just run them again):</p>
+<pre class="r"><code>test_that(&quot;No missing data when there should be data&quot;, {
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$beer)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$cider)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$sherry)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$wine)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$shandy)])))
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$spirits)])))
+})
+
+message(&quot;Tests pass&quot;)</code></pre>
+<pre><code>## Tests pass</code></pre>
+</div>
+<div id="test-for-true-zero" class="section level2">
+<h2>Test for ‘true zero’</h2>
+<p>Now I want to make sure I have a ‘true zero’ for the respondents that were asked the drinking questions, but that did not drink. Notice the <code>days_drink</code> variable? If this contains data (i.e. is not <code>NA</code>) then the respondent was asked the series of drinking questions, and should be included in the valid sample, even if they didn’t drink anything. Most respondents who were asked <code>days_drink</code> who did not drink have <code>0</code> coded in the drinks types so that these sum correctly. In some cases, though, the drinks data were missing despite the respondent being asked about their drinking behaviour:</p>
+<pre class="r"><code>bcs70 %&gt;%
+  filter(!is.na(days_drink), is.na(shandy)) %&gt;%
+  select(bcsid, days_drink, beer, cider, wine, sherry, shandy, spirits, total_units)</code></pre>
+<pre><code>## # A tibble: 1 x 9
+##   bcsid days_drink  beer cider  wine sherry shandy spirits total_units
+##   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+## 1    19          1    NA    NA    NA     NA     NA      NA          NA</code></pre>
+<p>To check for this I wrote the following test, which will fail if any respondent with data in <code>days_drink</code> also has a missing value in <code>total_units</code>:</p>
+<pre class="r"><code>test_that(&quot;True zero coded&quot;, {
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$days_drink)])))
+})</code></pre>
+<p>To fix this I replaced any <code>NA</code> in <code>total_units</code> with 0, <em>if</em> there is data in <code>days_drink</code>:</p>
+<pre class="r"><code>bcs70 =
+  bcs70 %&gt;%
+  mutate(
+    total_units = if_else(
+      is.na(total_units) &amp; !is.na(days_drink),
+      0.0,
+      total_units
+    )
+  )</code></pre>
+<p>Now when I run the test it passes:</p>
+<pre class="r"><code>test_that(&quot;True zero coded&quot;, {
+  expect_false(any(is.na(bcs70$total_units[!is.na(bcs70$days_drink)])))
+})
+
+message(&quot;Tests pass&quot;)</code></pre>
+<pre><code>## Tests pass</code></pre>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>I hope from this tutorial/example you can see that what can ostensibly be a straightforward task can, on closer inspection, be challenging to get right. Testing the calculations and data helped in three main ways:</p>
+<ul>
+<li>Tests helped identify the problem(s).</li>
+<li>Tests helped verify the problems were solved.</li>
+<li>Re–running the tests helped ensure the problem didn’t return after fixing something else.</li>
+</ul>
+<p>For complex data I would recommend writing a test suite and regularly running it when working on any data processing steps.</p>
+</div>
+<div id="scripts" class="section level2">
+<h2>Scripts</h2>
+<p>I’ve bundled the data, data processing, and testing code above into files to download to see how these work in a ‘real’ project (rather than inline in a blog post).</p>
+<ul>
+<li><a href="https://philmikejones.me/tutorials/2019-04-09-test-your-data/test-example.zip">Download project zip file</a></li>
+</ul>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>The best places to start with writing your own tests (and you should) for #rstats are:</p>
+<ul>
+<li><a href="http://r-pkgs.had.co.nz/tests.html">Testing</a> chapter in Hadley Wickham’s <em>R Packages</em></li>
+<li>The <a href="https://testthat.r-lib.org/"><code>testthat</code> documentation</a></li>
+<li>The <a href="https://stackoverflow.com/questions/tagged/testthat"><code>testthat</code> tag on StackOverflow</a></li>
+</ul>
+</div>
