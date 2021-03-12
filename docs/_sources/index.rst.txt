@@ -25,10 +25,6 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2020-01-07-install-zotero-ubuntu.rst
 
 
-Indices and tables
-==================
-
 .. * :ref:`genindex`
 .. * :ref:`modindex`
-
-* :ref:`search`
+.. * :ref:`search`
