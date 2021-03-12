@@ -210,7 +210,7 @@ test_that("Calculated units are numeric", {
 ```
 
 ```
-## Test passed 🥇
+## Test passed 😀
 ```
 
 Next I want to test that the number of units calculated are plausible amounts.
@@ -285,7 +285,7 @@ test_that("Calculated maximum units are 180.0/1080.0", {
 ```
 
 ```
-## Test passed 😀
+## Test passed 🎊
 ```
 
 
@@ -308,7 +308,7 @@ test_that("No missing data when there should be data", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 🥇
 ```
 
 Each of these tests is essentially saying, "if there's data in one of more of the drinks variables (`!is.na()` means 'is not missing') there should not be any missing data in `total_units`".
@@ -438,7 +438,7 @@ test_that("No missing data when there should be data", {
 ```
 
 ```
-## Test passed 😸
+## Test passed 🎊
 ```
 
 
@@ -498,7 +498,7 @@ test_that("True zero coded", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 🥇
 ```
 
 
@@ -518,7 +518,7 @@ For complex data I would recommend writing a test suite and regularly running it
 
 I've bundled the data, data processing, and testing code above into files to download to see how these work in a 'real' project (rather than inline in a blog post).
 
-- [Download project zip file](https://philmikejones.me/tutorials/2019-04-09-test-your-data/test-example.zip)
+- [Download project zip file](https://philmikejones.me/_static/data/test-example.zip)
 
 ## Resources
 

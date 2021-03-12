@@ -341,7 +341,7 @@ For complex data I would recommend writing a test suite and regularly running it
 
 I've bundled the data, data processing, and testing code above into files to download to see how these work in a 'real' project (rather than inline in a blog post).
 
-- [Download project zip file](https://philmikejones.me/tutorials/2019-04-09-test-your-data/test-example.zip)
+- [Download project zip file](https://philmikejones.me/_static/data/test-example.zip)
 
 ## Resources
 
