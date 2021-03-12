@@ -12,7 +12,11 @@ BUILDDIR      = docs
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+knit:
+	Rscript -e 'knitr::knit("tutorials/2019-04-09-test-your-data.Rmd", "tutorials/2019-04-09-test-your-data.md")'
+	pandoc tutorials/2019-04-09-test-your-data.md -o tutorials/2019-04-09-test-your-data.rst
+
+.PHONY: help Makefile knit
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
