@@ -16,6 +16,7 @@ knit:
 	Rscript -e 'knitr::knit("tutorials/2019-04-09-test-your-data.Rmd", "tutorials/2019-04-09-test-your-data.md")'
 	pandoc tutorials/2019-04-09-test-your-data.md -o tutorials/2019-04-09-test-your-data.rst
 	pandoc tutorials/2019-01-03-install-qgis-ubuntu.md -o tutorials/2019-01-03-install-qgis-ubuntu.rst
+	pandoc tutorials/2018-09-04-commissioning-research.md -o tutorials/2018-09-04-commissioning-research.rst
 
 .PHONY: help Makefile knit
 
