@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+================
 Phil Mike Jones
-=========================================
+================
 
 I write code to analyse spatial and non-spatial data sets.
 I typically use Python, R, and Linux.
@@ -16,7 +17,7 @@ Always be careful copying and pasting code from an internet source before runnin
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
 
