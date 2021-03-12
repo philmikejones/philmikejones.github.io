@@ -6,6 +6,10 @@ categories: "tutorials"
 tags: ["r", "rstats", "test", "unit test", "testthat"]
 ---
 
+# Test your data
+
+2019-04-09
+
 I've written and spoken before about how important it is to [test your functions and data analysis scripts](blog/unit-testing-in-r/).
 I decided to revisit these ideas and write this tutorial based on my recent experience of calculating the number of units of alcohol the panel members in the [NCDS and BCS70 birth cohorts](https://cls.ucl.ac.uk/cls-studies/) drank at different time points.
 I initially thought this would be a straightforward mathematical calculation but this turned out to be vastly more complicated than I thought (it always does!).
@@ -206,7 +210,7 @@ test_that("Calculated units are numeric", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 🥇
 ```
 
 Next I want to test that the number of units calculated are plausible amounts.
@@ -242,7 +246,7 @@ This is something I forget all the time:
 <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">If I had a quid for every time I forgot that NA + 0.0 is NOT 0.0 I&#39;d still be as forgetful but at least I&#39;d be richer <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://t.co/iaUBCd87Rk">pic.twitter.com/iaUBCd87Rk</a></p>&mdash; 🇪🇺🌍 Phil (@philmikejones) <a href="https://twitter.com/philmikejones/status/1107958263247720448?ref_src=twsrc%5Etfw">March 19, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-So we must modify our tests to exclude the NAs with [`na.rm = TRUE`](https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extremes):
+So we must modify our tests to exclude the NAs with [na.rm = TRUE](https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extremes):
 
 
 ```r
@@ -258,15 +262,7 @@ test_that("Calculated minimum units are 0.0", {
 ```
 
 ```
-## Test passed 🥇
-```
-
-```r
-message("Tests pass")
-```
-
-```
-## Tests pass
+## Test passed 🎉
 ```
 
 So far, so good.
@@ -289,15 +285,7 @@ test_that("Calculated maximum units are 180.0/1080.0", {
 ```
 
 ```
-## Test passed 🥇
-```
-
-```r
-message("Tests pass")
-```
-
-```
-## Tests pass
+## Test passed 😀
 ```
 
 
@@ -453,14 +441,6 @@ test_that("No missing data when there should be data", {
 ## Test passed 😸
 ```
 
-```r
-message("Tests pass")
-```
-
-```
-## Tests pass
-```
-
 
 ## Test for 'true zero'
 
@@ -518,15 +498,7 @@ test_that("True zero coded", {
 ```
 
 ```
-## Test passed 🎊
-```
-
-```r
-message("Tests pass")
-```
-
-```
-## Tests pass
+## Test passed 🥳
 ```
 
 
@@ -553,5 +525,5 @@ I've bundled the data, data processing, and testing code above into files to dow
 The best places to start with writing your own tests (and you should) for #rstats are:
 
 - [Testing](http://r-pkgs.had.co.nz/tests.html) chapter in Hadley Wickham's *R Packages*
-- The [`testthat` documentation](https://testthat.r-lib.org/)
-- The [`testthat` tag on StackOverflow](https://stackoverflow.com/questions/tagged/testthat)
+- The [testthat documentation](https://testthat.r-lib.org/)
+- The [testthat tag on StackOverflow](https://stackoverflow.com/questions/tagged/testthat)

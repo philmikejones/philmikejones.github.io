@@ -1,3 +1,8 @@
+Test your data
+==============
+
+2019-04-09
+
 I’ve written and spoken before about how important it is to `test your
 functions and data analysis scripts <blog/unit-testing-in-r/>`__. I
 decided to revisit these ideas and write this tutorial based on my
@@ -222,7 +227,7 @@ numeric (specifically double):
 
 ::
 
-   ## Test passed 🥳
+   ## Test passed 🥇
 
 Next I want to test that the number of units calculated are plausible
 amounts. The minimum number of units should be ``0.0``; it’s not
@@ -280,8 +285,8 @@ pic.twitter.com/iaUBCd87Rk
 
    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-So we must modify our tests to exclude the NAs with
-```na.rm = TRUE`` <https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extremes>`__:
+So we must modify our tests to exclude the NAs with `na.rm =
+TRUE <https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extremes>`__:
 
 .. code:: r
 
@@ -297,15 +302,7 @@ So we must modify our tests to exclude the NAs with
 
 ::
 
-   ## Test passed 🥇
-
-.. code:: r
-
-   message("Tests pass")
-
-::
-
-   ## Tests pass
+   ## Test passed 🎉
 
 So far, so good. (You don’t need to manually add the ``message()`` line
 under normal circumstances as you get feedback from ``testthat`` in
@@ -332,15 +329,7 @@ comes in:
 
 ::
 
-   ## Test passed 🥇
-
-.. code:: r
-
-   message("Tests pass")
-
-::
-
-   ## Tests pass
+   ## Test passed 😀
 
 Test for missing data
 ---------------------
@@ -501,14 +490,6 @@ a document, you’d just run them again):
 
    ## Test passed 😸
 
-.. code:: r
-
-   message("Tests pass")
-
-::
-
-   ## Tests pass
-
 Test for ‘true zero’
 --------------------
 
@@ -570,15 +551,7 @@ Now when I run the test it passes:
 
 ::
 
-   ## Test passed 🎊
-
-.. code:: r
-
-   message("Tests pass")
-
-::
-
-   ## Tests pass
+   ## Test passed 🥳
 
 Conclusion
 ----------
@@ -613,6 +586,6 @@ for #rstats are:
 
 -  `Testing <http://r-pkgs.had.co.nz/tests.html>`__ chapter in Hadley
    Wickham’s *R Packages*
--  The ```testthat`` documentation <https://testthat.r-lib.org/>`__
--  The ```testthat`` tag on
+-  The `testthat documentation <https://testthat.r-lib.org/>`__
+-  The `testthat tag on
    StackOverflow <https://stackoverflow.com/questions/tagged/testthat>`__
