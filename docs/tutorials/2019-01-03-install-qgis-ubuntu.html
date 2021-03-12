@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Install QGIS in Ubuntu &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Install QGIS in Ubuntu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2019-01-03-install-qgis-ubuntu.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install-qgis-in-ubuntu">
+<h1>Install QGIS in Ubuntu<a class="headerlink" href="#install-qgis-in-ubuntu" title="Permalink to this headline">¶</a></h1>
+<p>2019-01-03</p>
+<p>Instructions to install QGIS 3 in Ubuntu Bionic Beaver 19.04 LTS, as of
+January 2019.</p>
+<p>The instructions on the QGIS website to install QGIS on Ubuntu are a
+little bit ambiguous, so these are the steps I recommend you follow for
+most purposes.</p>
+<div class="section" id="add-the-ubuntugis-unstable-repository">
+<h2>Add the <code class="docutils literal notranslate"><span class="pre">ubuntugis-unstable</span></code> repository<a class="headerlink" href="#add-the-ubuntugis-unstable-repository" title="Permalink to this headline">¶</a></h2>
+<p>Each new version of Ubuntu usually has the most up–to–date libraries
+available at the time of its release, but these are not typically
+updated as these libraries are updated. That means that the libraries in
+the latest LTS of Ubuntu are now nearly a year old. In most cases this
+behaviour is desirable because it stops clashing versions of software
+being installed and causing problems, but in some cases it can cause its
+own problems because software that depends on newer libraries cannot use
+them.</p>
+<p>From experience newer QGIS versions tend to depend on libraries more
+recent than those available by default, so we can add a repository of
+more up–to–date GIS libraries. These generally do not interact with much
+else on the system so can be safely installed. If you’re an R user they
+are also useful for using <code class="docutils literal notranslate"><span class="pre">sf</span></code> and related libraries.</p>
+<p>To install <code class="docutils literal notranslate"><span class="pre">ubuntugis-unstable</span></code> follow the instructions at
+<a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable">ubuntugis-unstable: Adding this PPA to your
+system</a>.
+In short, open a terminal (default CTRL + ALT + T) and copy/type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ubuntugis</span><span class="o">/</span><span class="n">ubuntugis</span><span class="o">-</span><span class="n">unstable</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>You’ll be asked for your password (it’s the same one you use to login).</p>
+<p>Don’t worry about the <code class="docutils literal notranslate"><span class="pre">unstable</span></code> in the name. It doesn’t mean it will
+keep crashing; it’s just not yet as thoroughly tested as the <code class="docutils literal notranslate"><span class="pre">stable</span></code>
+versions. These <code class="docutils literal notranslate"><span class="pre">unstable</span></code> libraries are perfectly adequate for
+production systems, just not anything mission–critical.</p>
+</div>
+<div class="section" id="add-the-qgis-public-key">
+<h2>Add the QGIS public key<a class="headerlink" href="#add-the-qgis-public-key" title="Permalink to this headline">¶</a></h2>
+<p>To keep your installation safe make sure you add the QGIS public key.
+This is a way for your system to automatically verify the software it
+downloads so that nothing malicious is installed on your system.</p>
+<p>Under the <a class="reference external" href="https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu">Debian/Ubuntu installation
+instructions</a>
+there is a section that says:</p>
+<blockquote>
+<div><p>In case of keyserver errors add the qgis.org repository public key to
+your apt keyring, type:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">qgis</span><span class="o">-</span><span class="mf">2017.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span>
+<span class="nn">gpg</span> <span class="o">--</span><span class="n">fingerprint</span> <span class="n">CAEB3DC3BDF7FB45</span>
+</pre></div>
+</div>
+<p>Enter these commands in your terminal. The <code class="docutils literal notranslate"><span class="pre">wget</span></code> line downloads the
+key and the <code class="docutils literal notranslate"><span class="pre">gpg</span></code> line outputs a fingerprint calculated from the key
+you just downloaded. Ensure this fingerprint printed in your teminal
+matches the one on the QGIS website.</p>
+<p>Once you’ve checked this you then need to activate the key with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">export</span> <span class="o">--</span><span class="n">armor</span> <span class="n">CAEB3DC3BDF7FB45</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-qgis">
+<h2>Install QGIS<a class="headerlink" href="#install-qgis" title="Permalink to this headline">¶</a></h2>
+<p>Finally to install QGIS open <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">gedit</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>You might need to enter your password again, then copy and paste the
+following three lines to the bottom of this file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># QGIS Ubuntugis-unstable dependencies</span>
+<span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span> <span class="n">bionic</span> <span class="n">main</span>
+<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span> <span class="n">bionic</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Then save (CTRL + s) then exit.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> is a list of places Ubuntu can download
+software from. We are adding QGIS servers to this list so that Ubuntu
+knows where to download it from.</p>
+<p>Now run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">qgis</span> <span class="n">python</span><span class="o">-</span><span class="n">qgis</span>
+</pre></div>
+</div>
+<p>This will install the basic packages needed and you should now be able
+to run QGIS! You might need to install additional libraries later, but
+these can be installed as necessary.</p>
+</div>
+<div class="section" id="notes-on-qgis-version">
+<h2>Notes on QGIS version<a class="headerlink" href="#notes-on-qgis-version" title="Permalink to this headline">¶</a></h2>
+<p>I would normally recommend the most recent LTR version of QGIS for most
+purposes. This is supported for longer so is the better choice for most
+environments.</p>
+<p>However, QGIS is transitioning from QGIS 2 to QGIS 3 and this is a big
+change in the underlying structure and operation of the software.
+Consequently I now recommend QGIS 3 as the default version, especially
+for beginners. As of January 2019 this is version 3.4 which is set to be
+the next LTR version.</p>
+<p>To install this version rather than the current LTR (still v2.x) we have
+used the latest software repositories. To continue using an LTR version
+when v3.4 finally replaces v2.x in the next few months you will need to
+replace the following sources in <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># QGIS Ubuntugis-unstable dependencies</span>
+<span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span> <span class="n">bionic</span> <span class="n">main</span>
+<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span> <span class="n">bionic</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># QGIS Ubuntugis-unstable dependencies</span>
+<span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span><span class="o">-</span><span class="n">ltr</span> <span class="n">bionic</span> <span class="n">main</span>
+<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">qgis</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ubuntugis</span><span class="o">-</span><span class="n">ltr</span> <span class="n">bionic</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Don’t forget to then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code>. Of course, if you’re happy
+with the latest version you don’t need to do anything.</p>
+<p>I’ll update this blog post when this happens, but when you run your
+usual <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code> or update through the Software Updater you’ll
+be prompted to accept a newer version of QGIS (probably 3.6) which is
+when you’ll know it’s time to change.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
