@@ -24,9 +24,10 @@ Always be careful copying and pasting code from an internet source before runnin
    about.rst
    tutorials/2019-04-09-test-your-data.rst
    tutorials/2019-01-03-install-qgis-ubuntu.rst
+   tutorials/2018-08-29-install-sf-ubuntu.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
    tutorials/2018-09-04-commissioning-research.rst
-   
+
 
 .. * :ref:`genindex`
 .. * :ref:`modindex`

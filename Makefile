@@ -17,6 +17,7 @@ knit:
 	pandoc tutorials/2019-04-09-test-your-data.md -o tutorials/2019-04-09-test-your-data.rst
 	pandoc tutorials/2019-01-03-install-qgis-ubuntu.md -o tutorials/2019-01-03-install-qgis-ubuntu.rst
 	pandoc tutorials/2018-09-04-commissioning-research.md -o tutorials/2018-09-04-commissioning-research.rst
+	pandoc tutorials/2018-08-29-install-sf-ubuntu.md -o tutorials/2018-08-29-install-sf-ubuntu.rst
 
 .PHONY: help Makefile knit
 
