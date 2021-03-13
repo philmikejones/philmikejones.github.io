@@ -51,7 +51,7 @@ bcs70 = read_csv(url)
 
 ```
 ## 
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## cols(
 ##   bcsid = col_double(),
 ##   days_drink = col_double(),
@@ -210,7 +210,7 @@ test_that("Calculated units are numeric", {
 ```
 
 ```
-## Test passed 😀
+## Test passed 🎊
 ```
 
 Next I want to test that the number of units calculated are plausible amounts.
@@ -262,7 +262,7 @@ test_that("Calculated minimum units are 0.0", {
 ```
 
 ```
-## Test passed 🎊
+## Test passed 🥳
 ```
 
 So far, so good.
@@ -285,7 +285,7 @@ test_that("Calculated maximum units are 180.0/1080.0", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 😀
 ```
 
 
@@ -438,7 +438,7 @@ test_that("No missing data when there should be data", {
 ```
 
 ```
-## Test passed 🎊
+## Test passed 🥇
 ```
 
 
@@ -498,7 +498,7 @@ test_that("True zero coded", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 🎊
 ```
 
 

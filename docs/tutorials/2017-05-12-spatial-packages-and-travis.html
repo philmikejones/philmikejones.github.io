@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Spatial packages and Travis &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geocoding with Googleway" href="2017-05-30-geocoding-googleway.html" />
+    <link rel="prev" title="Install sf package in Ubuntu" href="2018-08-29-install-sf-ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-19-group-figures-for-faster-review.html">Automate image layout for comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Spatial packages and Travis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Spatial packages and Travis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2017-05-12-spatial-packages-and-travis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spatial-packages-and-travis">
+<h1>Spatial packages and Travis<a class="headerlink" href="#spatial-packages-and-travis" title="Permalink to this headline">¶</a></h1>
+<p>Date: 2017-05-12 Update: 2021-03-13 - I no longer use Travis CI as they
+don’t seem to support open source projects any more. I should ideally
+update this post to work with generic docker containers that can be
+deployed anywhere.</p>
+<p>A number of <code class="docutils literal notranslate"><span class="pre">R</span></code> spatial libraries have been updated in the last couple
+of weeks, and this has played havoc with my Travis–CI build. I had still
+been using Ubuntu Trusty with Travis which uses old versions of
+libraries like <code class="docutils literal notranslate"><span class="pre">rgdal</span></code> and <code class="docutils literal notranslate"><span class="pre">rgeos</span></code>, so I needed to move to updated
+versions of these. In addition <code class="docutils literal notranslate"><span class="pre">sf</span></code> has now become a dependency for a
+number of spatial packages like <code class="docutils literal notranslate"><span class="pre">tmap</span></code>, and this uses
+<code class="docutils literal notranslate"><span class="pre">libudunits2-dev</span></code> which isn’t installed by default.</p>
+<p>To solve all these problems at once as simply as possible, I switched to
+using a docker container within Travis so I could use an Ubunutu 16.04
+(‘Xenial’) build. This meant I was able to upgrade to more up–to–date
+versions of most packages. I installed the <code class="docutils literal notranslate"><span class="pre">ubuntugis-unstable</span></code> ppa to
+use the most recent versions of <code class="docutils literal notranslate"><span class="pre">gdal</span></code>, <code class="docutils literal notranslate"><span class="pre">geos</span></code>, and <code class="docutils literal notranslate"><span class="pre">proj</span></code>. I
+finally installed <code class="docutils literal notranslate"><span class="pre">libudunits2</span></code> so I could update <code class="docutils literal notranslate"><span class="pre">sf</span></code>.</p>
+<p>The docker container is a bit slower (6 minutes vs 3 minutes) but will
+hopefully speed up with caching.</p>
+<p>The final <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> looked like this (I’ve removed my notification
+options and coverage report token for clarity):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">sudo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">required</span>
+
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">docker</span>
+
+<span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">r</span>
+<span class="nt">cache</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">packages</span>
+
+<span class="nt">before_install</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;docker</span><span class="nv"> </span><span class="s">pull</span><span class="nv"> </span><span class="s">ubuntu:16.04&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get --yes --force-yes update -qq</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install libgdal-dev libgeos-dev libproj-dev libudunits2-dev libv8-dev libprotobuf-dev protobuf-compiler libjq-dev</span>
+
+<span class="nt">r_packages</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sp</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rgdal</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rgeos</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="2017-05-30-geocoding-googleway.html" class="btn btn-neutral float-right" title="Geocoding with Googleway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="2018-08-29-install-sf-ubuntu.html" class="btn btn-neutral float-left" title="Install sf package in Ubuntu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

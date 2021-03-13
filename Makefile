@@ -21,6 +21,7 @@ knit:
 	Rscript -e 'knitr::knit("tutorials/2017-05-30-geocoding-googleway.Rmd", "tutorials/2017-05-30-geocoding-googleway.md")'
 	pandoc tutorials/2017-05-30-geocoding-googleway.md -o tutorials/2017-05-30-geocoding-googleway.rst
 	pandoc tutorials/2017-05-19-group-figures-for-faster-review.md -o tutorials/2017-05-19-group-figures-for-faster-review.rst
+	pandoc tutorials/2017-05-12-spatial-packages-and-travis.md -o tutorials/2017-05-12-spatial-packages-and-travis.rst
 
 .PHONY: help Makefile knit
 
