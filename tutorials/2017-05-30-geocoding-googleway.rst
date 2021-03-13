@@ -1,5 +1,5 @@
-Geocoding with Google Geocoding API and Googleway
-=================================================
+Geocoding with Googleway
+========================
 
 date: 2017-05-30
 
