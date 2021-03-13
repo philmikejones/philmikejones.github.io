@@ -227,7 +227,7 @@ numeric (specifically double):
 
 ::
 
-   ## Test passed 🎊
+   ## Test passed 🌈
 
 Next I want to test that the number of units calculated are plausible
 amounts. The minimum number of units should be ``0.0``; it’s not
@@ -302,7 +302,7 @@ TRUE <https://www.rdocumentation.org/packages/base/versions/3.5.3/topics/Extreme
 
 ::
 
-   ## Test passed 🥳
+   ## Test passed 🎉
 
 So far, so good. (You don’t need to manually add the ``message()`` line
 under normal circumstances as you get feedback from ``testthat`` in
@@ -329,7 +329,7 @@ comes in:
 
 ::
 
-   ## Test passed 😀
+   ## Test passed 🌈
 
 Test for missing data
 ---------------------
@@ -352,7 +352,7 @@ following tests to check for this:
 
 ::
 
-   ## Test passed 🌈
+   ## Test passed 😸
 
 Each of these tests is essentially saying, “if there’s data in one of
 more of the drinks variables (``!is.na()`` means ‘is not missing’) there
@@ -551,7 +551,7 @@ Now when I run the test it passes:
 
 ::
 
-   ## Test passed 🎊
+   ## Test passed 🥳
 
 Conclusion
 ----------

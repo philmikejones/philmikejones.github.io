@@ -210,7 +210,7 @@ test_that("Calculated units are numeric", {
 ```
 
 ```
-## Test passed 🎊
+## Test passed 🌈
 ```
 
 Next I want to test that the number of units calculated are plausible amounts.
@@ -262,7 +262,7 @@ test_that("Calculated minimum units are 0.0", {
 ```
 
 ```
-## Test passed 🥳
+## Test passed 🎉
 ```
 
 So far, so good.
@@ -285,7 +285,7 @@ test_that("Calculated maximum units are 180.0/1080.0", {
 ```
 
 ```
-## Test passed 😀
+## Test passed 🌈
 ```
 
 
@@ -308,7 +308,7 @@ test_that("No missing data when there should be data", {
 ```
 
 ```
-## Test passed 🌈
+## Test passed 😸
 ```
 
 Each of these tests is essentially saying, "if there's data in one of more of the drinks variables (`!is.na()` means 'is not missing') there should not be any missing data in `total_units`".
@@ -498,7 +498,7 @@ test_that("True zero coded", {
 ```
 
 ```
-## Test passed 🎊
+## Test passed 🥳
 ```
 
 

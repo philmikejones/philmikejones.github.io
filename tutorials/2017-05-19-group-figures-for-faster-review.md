@@ -12,7 +12,7 @@ My solution was to group the three images for each country onto one image for me
 
 
 
-To do this I wrote the following small python script using the [`pillow`](https://python-pillow.org/) library.
+To do this I wrote the following small python script using the [pillow](https://python-pillow.org/) library.
 The script:
 
 1. creates a blank canvas (A3 size),
