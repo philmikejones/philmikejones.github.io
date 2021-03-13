@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Geocoding with Google Geocoding API and Googleway &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Geocoding with Google Geocoding API and Googleway</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2017-05-30-geocoding-googleway.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="geocoding-with-google-geocoding-api-and-googleway">
+<h1>Geocoding with Google Geocoding API and Googleway<a class="headerlink" href="#geocoding-with-google-geocoding-api-and-googleway" title="Permalink to this headline">¶</a></h1>
+<p>date: 2017-05-30</p>
+<p>Geocoding is the process of taking an address, postcode, or other
+human–readable identifier and converting it into coordinates. Here I use
+the <a class="reference external" href="https://developers.google.com/maps/documentation/geocoding/intro">Google Geocoding
+API</a>
+which I access within R with the
+<a class="reference external" href="https://cran.r-project.org/package=googleway">googleway</a> package.</p>
+<div class="section" id="obtain-a-google-geocoding-api-key">
+<h2>Obtain a Google Geocoding API key<a class="headerlink" href="#obtain-a-google-geocoding-api-key" title="Permalink to this headline">¶</a></h2>
+<p>To use the Google Geocoding API service we need an API key:</p>
+<ul class="simple">
+<li><p>Open the <a class="reference external" href="https://developers.google.com/maps/documentation/geocoding/get-api-key">Get API
+Key</a>
+page</p></li>
+<li><p>Click Get Started</p></li>
+<li><p>When asked, you need to enable the <code class="docutils literal notranslate"><span class="pre">Places</span></code> product. Tick this and
+press Continue</p></li>
+<li><p>Select or create a project. If this is the first time you’re using
+this service you will need to create a new project. Type a project
+name and press Next</p></li>
+<li><p>You’ll need to set up a billing account and provide a debit or credit
+card. You can limit the API key use, but I can’t see a way around
+having to provide it.</p></li>
+<li><p>Follow the prompts and click Next or Continue</p></li>
+<li><p>You’ll be told, ‘You’re all set’, and be presented with your API key.</p></li>
+</ul>
+<div class="figure align-default" id="id1">
+<img alt="Google Geocoding set up" src="../_images/enable-geocoding-platform.png" />
+<p class="caption"><span class="caption-text">Google Geocoding set up</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="restrict-the-api-key">
+<h3>Restrict the API key<a class="headerlink" href="#restrict-the-api-key" title="Permalink to this headline">¶</a></h3>
+<p>At this point it’s worth limiting your API key to prevent misuse.</p>
+<ul class="simple">
+<li><p>You can <a class="reference external" href="https://cloud.google.com/apis/docs/capping-api-usage">set up a cap on
+usage</a> to
+make sure you don’t overspend. Recommended.</p></li>
+<li><p>You <em>should</em> <a class="reference external" href="https://cloud.google.com/docs/authentication/api-keys?hl=en-GB#api_key_restrictions">restrict use of your API
+key</a>,
+for example for requests to only originate from your domain or
+computer.</p>
+<ul>
+<li><p>Click on Navigation menu () &gt; APIs &amp; Services &gt; Credentials</p></li>
+<li><p>Click on Edit API Key ()</p></li>
+<li><p>At the very least, click on API restrictions and restrict your API
+key to only the Geocoding API</p></li>
+<li><p>You can optionally set Application restrictions, such as
+permitting queries only from a specific IP address (useful if you
+have a fixed IP)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="using-your-key">
+<h2>Using your key<a class="headerlink" href="#using-your-key" title="Permalink to this headline">¶</a></h2>
+<p>One way to use your API key is to store it in a text file that is not
+kept with your data analysis. That way you can still share the data
+analysis script or results without sharing the key.</p>
+<p>For example, add <code class="docutils literal notranslate"><span class="pre">keys/</span></code> to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> so that folder isn’t
+tracked and shared, and place your key in there. Load it with
+<code class="docutils literal notranslate"><span class="pre">readLines()</span></code>.</p>
+<p>Alternatively set an environment variable with your key, for example
+<code class="docutils literal notranslate"><span class="pre">GEOCODE_TUTORIAL_KEY</span></code> which you can then load in to your R session
+with <code class="docutils literal notranslate"><span class="pre">Sys.getenv</span></code>:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gkey</span> <span class="o">=</span> <span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">&quot;GEOCODE_TUTORIAL_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>If you need to, install googleway:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;googleway&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-your-humanreadable-addresses">
+<h2>Set up your human–readable addresses<a class="headerlink" href="#set-up-your-humanreadable-addresses" title="Permalink to this headline">¶</a></h2>
+<p>You now need to wrangle your address data into a form the Geocoding API
+can understand. For example, it’s common to have a data base with a
+field for town and a field for country, like the <code class="docutils literal notranslate"><span class="pre">addresses</span></code> data base
+below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>town</p></th>
+<th class="head"><p>country</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sheffield</p></td>
+<td><p>England</p></td>
+</tr>
+<tr class="row-odd"><td><p>Manchester</p></td>
+<td><p>England</p></td>
+</tr>
+<tr class="row-even"><td><p>Glasgow</p></td>
+<td><p>Scotland</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cardiff</p></td>
+<td><p>Wales</p></td>
+</tr>
+</tbody>
+</table>
+<p>The Geocoding API expects a single string per query, so we need to join
+the two items. As it happens, <code class="docutils literal notranslate"><span class="pre">paste0()</span></code> is vectorised:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">address_strings</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">addresses</span><span class="o">$</span><span class="n">town</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="n">addresses</span><span class="o">$</span><span class="n">country</span><span class="p">)</span>
+<span class="n">address_strings</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;Sheffield, England&quot;  &quot;Manchester, England&quot; &quot;Glasgow, Scotland&quot;</span>
+<span class="c1">## [4] &quot;Cardiff, Wales&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">addresses</span></code> is now ready to geocode.</p>
+</div>
+<div class="section" id="storing-the-results">
+<h2>Storing the results<a class="headerlink" href="#storing-the-results" title="Permalink to this headline">¶</a></h2>
+<p>I don’t know of a vectorised way to geocode a number of addresses, so
+I’m going to use a <code class="docutils literal notranslate"><span class="pre">for()</span></code> loop. We’re limited to the number of times
+we can query the API server per second anyway, so this isn’t going to be
+a problem.</p>
+<p>As with all <code class="docutils literal notranslate"><span class="pre">for()</span></code> loops in R, we should create an empty vector and
+replace values rather than append each time. See <a class="reference external" href="https://csgillespie.github.io/efficientR/programming.html#memory-allocation">Efficient R
+Programming</a>
+for why this is a good idea.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">addresses</span><span class="p">))</span>
+<span class="n">lng</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">addresses</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geocode">
+<h2>Geocode<a class="headerlink" href="#geocode" title="Permalink to this headline">¶</a></h2>
+<p>To perform the actual geocoding, we loop over <code class="docutils literal notranslate"><span class="pre">address_strings</span></code> and
+append the latitude and longitude coordinates to our pre–allocated
+vectors. I also check that the query returned <code class="docutils literal notranslate"><span class="pre">OK</span></code>; if it hasn’t I
+simply enter a missing value (<code class="docutils literal notranslate"><span class="pre">NA</span></code>) which can be fixed later (manually
+if necessary). Finally, sometimes the API returns multiple results so
+I’ve selected the first one. This tends to happen if the query isn’t
+specific enough (for example ‘Manchester’ might return Manchester, UK
+and Manchester, New Hampshire, USA). Again, these can be fixed later if
+necessary.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">addresses</span><span class="p">))</span> <span class="p">{</span>
+  <span class="n">coord</span> <span class="o">=</span> <span class="n">googleway</span><span class="o">::</span><span class="nf">google_geocode</span><span class="p">(</span><span class="n">address_strings</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="n">gkey</span><span class="p">)</span>
+
+  <span class="nf">if </span><span class="p">(</span><span class="n">coord</span><span class="o">$</span><span class="n">status</span> <span class="o">==</span> <span class="s">&quot;OK&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">coord</span> <span class="o">=</span> <span class="n">googleway</span><span class="o">::</span><span class="nf">geocode_coordinates</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span>
+    <span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">coord</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>  <span class="c1"># sometimes returns multiple coordinates</span>
+    <span class="n">lng</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">coord</span><span class="o">$</span><span class="n">lng</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>  <span class="c1"># sometimes returns multiple coordinates</span>
+  <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+    <span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">NA</span>
+    <span class="n">lng</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">NA</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can then append our coordinates to our original data frame
+(<code class="docutils literal notranslate"><span class="pre">addresses</span></code>):</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">addresses</span><span class="o">$</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
+<span class="n">addresses</span><span class="o">$</span><span class="n">lng</span> <span class="o">=</span> <span class="n">lng</span>
+
+<span class="n">addresses</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##         town  country      lat       lng</span>
+<span class="c1">## 1  Sheffield  England 53.38113 -1.470085</span>
+<span class="c1">## 2 Manchester  England 53.48076 -2.242631</span>
+<span class="c1">## 3    Glasgow Scotland 55.86424 -4.251806</span>
+<span class="c1">## 4    Cardiff    Wales 51.48158 -3.179090</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

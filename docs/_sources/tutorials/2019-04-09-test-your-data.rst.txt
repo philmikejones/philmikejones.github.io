@@ -63,7 +63,7 @@ Now download the example data we’ll use:
 ::
 
    ## 
-   ## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────
+   ## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    ## cols(
    ##   bcsid = col_double(),
    ##   days_drink = col_double(),
@@ -227,7 +227,7 @@ numeric (specifically double):
 
 ::
 
-   ## Test passed 🥳
+   ## Test passed 🥇
 
 Next I want to test that the number of units calculated are plausible
 amounts. The minimum number of units should be ``0.0``; it’s not
@@ -352,7 +352,7 @@ following tests to check for this:
 
 ::
 
-   ## Test passed 🎊
+   ## Test passed 😀
 
 Each of these tests is essentially saying, “if there’s data in one of
 more of the drinks variables (``!is.na()`` means ‘is not missing’) there
@@ -488,7 +488,7 @@ a document, you’d just run them again):
 
 ::
 
-   ## Test passed 😀
+   ## Test passed 🥳
 
 Test for ‘true zero’
 --------------------
@@ -551,7 +551,7 @@ Now when I run the test it passes:
 
 ::
 
-   ## Test passed 🎊
+   ## Test passed 😸
 
 Conclusion
 ----------
