@@ -13,15 +13,17 @@ help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 knit:
-	Rscript -e 'knitr::knit("tutorials/2019-04-09-test-your-data.Rmd", "tutorials/2019-04-09-test-your-data.md")'
+	# Rscript -e 'knitr::knit("tutorials/2019-04-09-test-your-data.Rmd", "tutorials/2019-04-09-test-your-data.md")'
 	pandoc tutorials/2019-04-09-test-your-data.md -o tutorials/2019-04-09-test-your-data.rst
 	pandoc tutorials/2019-01-03-install-qgis-ubuntu.md -o tutorials/2019-01-03-install-qgis-ubuntu.rst
 	pandoc tutorials/2018-09-04-commissioning-research.md -o tutorials/2018-09-04-commissioning-research.rst
 	pandoc tutorials/2018-08-29-install-sf-ubuntu.md -o tutorials/2018-08-29-install-sf-ubuntu.rst
-	Rscript -e 'knitr::knit("tutorials/2017-05-30-geocoding-googleway.Rmd", "tutorials/2017-05-30-geocoding-googleway.md")'
+	# Rscript -e 'knitr::knit("tutorials/2017-05-30-geocoding-googleway.Rmd", "tutorials/2017-05-30-geocoding-googleway.md")'
 	pandoc tutorials/2017-05-30-geocoding-googleway.md -o tutorials/2017-05-30-geocoding-googleway.rst
 	pandoc tutorials/2017-05-19-group-figures-for-faster-review.md -o tutorials/2017-05-19-group-figures-for-faster-review.rst
 	pandoc tutorials/2017-05-12-spatial-packages-and-travis.md -o tutorials/2017-05-12-spatial-packages-and-travis.rst
+	# Rscript -e 'knitr::knit("tutorials/2016-09-29-simplify-polygons-without-creating-slivers.Rmd", "tutorials/2016-09-29-simplify-polygons-without-creating-slivers.md")'
+	pandoc tutorials/2016-09-29-simplify-polygons-without-creating-slivers.md -o tutorials/2016-09-29-simplify-polygons-without-creating-slivers.rst
 
 .PHONY: help Makefile knit
 

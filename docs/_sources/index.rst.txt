@@ -24,6 +24,7 @@ Always be careful copying and pasting code from an internet source before runnin
    about.rst
    tutorials/2019-04-09-test-your-data.rst
    tutorials/2017-05-19-group-figures-for-faster-review.rst
+   tutorials/2016-09-29-simplify-polygons-without-creating-slivers.rst
    tutorials/2019-01-03-install-qgis-ubuntu.rst
    tutorials/2018-08-29-install-sf-ubuntu.rst
    tutorials/2017-05-12-spatial-packages-and-travis.rst
