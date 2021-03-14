@@ -20,7 +20,7 @@ Always be careful copying and pasting code from an internet source before runnin
    :maxdepth: 1
    :caption: Contents:
 
-
+     
    about.rst
    tutorials/2019-04-09-test-your-data.rst
    tutorials/2017-05-19-group-figures-for-faster-review.rst
@@ -29,6 +29,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2018-08-29-install-sf-ubuntu.rst
    tutorials/2017-05-12-spatial-packages-and-travis.rst
    tutorials/2017-05-30-geocoding-googleway.rst
+   tutorials/2016-07-14-creating-a-globe-in-qgis.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
    tutorials/2018-09-04-commissioning-research.rst
 

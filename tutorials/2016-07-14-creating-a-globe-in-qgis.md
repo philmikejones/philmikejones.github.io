@@ -1,16 +1,16 @@
----
-title: "Create a globe in QGIS"
+
+# Create a globe in QGIS
 date: 2016-07-14
-author: "Phil Mike Jones"
-categories: ["tutorials"]
-tags: ["cartography", "gis", "globe", "projection", "QGIS", "map"]
----
+
+
+
+
 
 I followed this tutorial by [Steven Bernard](https://twitter.com/sdbernard) to create a globe from a world map in QGIS.
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/rUShqJde2CA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<!--more-->
+
 
 The steps are straightforward.
 The fiddly bit was getting the line endings and indentation correct which are essential in Python, so I copied the text out and created a gist with line endings preserved:
@@ -28,4 +28,4 @@ Replacing `x` and `y` with your latitude and longitude (NOT longitude and latitu
 
 The result is a beautiful globe when appropriately styled:
 
-![World map globe projection](../../img/globe.png)
+![World map globe projection](../_static/img/globe.png)
