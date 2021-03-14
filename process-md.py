@@ -10,6 +10,7 @@ f = re.sub('author: ["A-Za-z ]+', '', f)
 f = re.sub('categories: [\[\]"A-Za-z ]+', '', f)
 f = re.sub('tags: [\[\]"a-zA-Z ,]+', '', f)
 f = re.sub('<!--more-->', '', f)
+f = re.sub('../../', '../_static/', f)
 
 with open(sys.argv[1], 'w') as file:
     file.write(f)
