@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS    ?=
+SPHINXOPTS    ?= -E
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = docs
@@ -24,6 +24,7 @@ knit:
 	pandoc tutorials/2017-05-12-spatial-packages-and-travis.md -o tutorials/2017-05-12-spatial-packages-and-travis.rst
 	# Rscript -e 'knitr::knit("tutorials/2016-09-29-simplify-polygons-without-creating-slivers.Rmd", "tutorials/2016-09-29-simplify-polygons-without-creating-slivers.md")'
 	pandoc tutorials/2016-09-29-simplify-polygons-without-creating-slivers.md -o tutorials/2016-09-29-simplify-polygons-without-creating-slivers.rst
+	pandoc tutorials/2016-07-14-creating-a-globe-in-qgis.md -o tutorials/2016-07-14-creating-a-globe-in-qgis.rst
 
 .PHONY: help Makefile knit
 
