@@ -54,11 +54,11 @@ I convene the following modules:
 
 - 2020-21 6CJ996 Dissertation (Professional Policing), University of Derby
 - 2020-21 5CJ578 Problem solving models and theories (Professional Policing), University of Derby
-- 2019-20 5CJ578 Problem solving models and theories (Professional Policing), University of Derby
 
 I have been module convenor for:
 
-- 5SL520 Statistics (Sociology), University of Derby
+- 2019-20 5CJ578 Problem solving models and theories (Professional Policing), University of Derby
+- 2019-20 5SL520 Statistics (Sociology), University of Derby
 
 I have taught on the following modules and courses:
 
