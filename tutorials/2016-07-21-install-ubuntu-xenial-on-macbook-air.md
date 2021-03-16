@@ -1,15 +1,10 @@
----
-title: "Install Ubuntu on Macbook Air"
+
+# Install Ubuntu on Macbook Air
+
 date: 2016-07-21
-author: "Phil Mike Jones"
-categories: ["tutorials"]
-tags: ["Ubuntu", "Linux", "Mac", "Macbook", "OS X"]
----
 
 Below are simply my notes on installing Ubuntu on a Macbook Air as I couldn't find one clear or up-to-date source.
 My Macbook is a mid-2011 (4,2) so your mileage may vary if you have a different model.
-
-<!--more-->
 
 > NB: If you try to follow these instructions you do so at your own risk; I make no guarantees that these instructions work or even that they won't brick your Macbook.
 > Needless to say, make a backup of anything you need before you begin.
