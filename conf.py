@@ -52,7 +52,8 @@ html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = {
     'analytics_id': ' UA-44027458-2',
-    'prev_next_buttons_location': 'none'
+    'prev_next_buttons_location': 'none',
+    'titles_only': True
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
