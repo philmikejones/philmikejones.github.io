@@ -26,6 +26,8 @@ knit:
 	pandoc tutorials/2016-09-29-simplify-polygons-without-creating-slivers.md -o tutorials/2016-09-29-simplify-polygons-without-creating-slivers.rst
 	pandoc tutorials/2016-07-14-creating-a-globe-in-qgis.md -o tutorials/2016-07-14-creating-a-globe-in-qgis.rst
 	pandoc tutorials/2016-07-21-install-ubuntu-xenial-on-macbook-air.md -o tutorials/2016-07-21-install-ubuntu-xenial-on-macbook-air.rst
+	Rscript -e 'knitr::knit("tutorials/2015-09-03-dissolve-polygons-in-r.Rmd", "tutorials/2015-09-03-dissolve-polygons-in-r.md")'
+	pandoc tutorials/2015-09-03-dissolve-polygons-in-r.md -o tutorials/2015-09-03-dissolve-polygons-in-r.rst
 
 .PHONY: help Makefile knit
 

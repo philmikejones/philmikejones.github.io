@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dissolve polygons in R &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geocoding with Googleway" href="2017-05-30-geocoding-googleway.html" />
+    <link rel="prev" title="Simplify polygons without creating slivers" href="2016-09-29-simplify-polygons-without-creating-slivers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-19-group-figures-for-faster-review.html">Automate image layout for comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-09-29-simplify-polygons-without-creating-slivers.html">Simplify polygons without creating slivers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dissolve polygons in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-12-spatial-packages-and-travis.html">Spatial packages and Travis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-14-creating-a-globe-in-qgis.html">Create a globe in QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-21-install-ubuntu-xenial-on-macbook-air.html">Install Ubuntu on Macbook Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dissolve polygons in R</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2015-09-03-dissolve-polygons-in-r.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dissolve-polygons-in-r">
+<h1>Dissolve polygons in R<a class="headerlink" href="#dissolve-polygons-in-r" title="Permalink to this headline">¶</a></h1>
+<p>date: 2015-09-03</p>
+<p>Dissolving polygons is an elementary GIS task that I need to perform
+regularly. A dissolve removes internal boundaries, leaving only the
+outline.</p>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>Install and load the packages we’ll need. I use <code class="docutils literal notranslate"><span class="pre">sf</span></code> because it’s more
+intuitive than <code class="docutils literal notranslate"><span class="pre">rgdal</span></code>, and I’m loading <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> because it plays
+well with <code class="docutils literal notranslate"><span class="pre">sf</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(c(&quot;dplyr&quot;, &quot;sf&quot;, &quot;ggplot2&quot;))</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boundary-data">
+<h2>Boundary data<a class="headerlink" href="#boundary-data" title="Permalink to this headline">¶</a></h2>
+<p>Download the shapefile we’re going to dissolve.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_dir</span> <span class="o">=</span> <span class="nf">tempdir</span><span class="p">()</span>
+<span class="n">tmp</span>     <span class="o">=</span> <span class="nf">tempfile</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">fileext</span> <span class="o">=</span> <span class="s">&quot;.zip&quot;</span><span class="p">)</span>
+
+<span class="nf">download.file</span><span class="p">(</span>
+  <span class="s">&quot;http://census.edina.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip&quot;</span><span class="p">,</span>
+  <span class="n">destfile</span> <span class="o">=</span> <span class="n">tmp</span>
+<span class="p">)</span>
+<span class="nf">unzip</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">exdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And now load the shapefile we just extracted and plot it to ensure it’s
+worked:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">regions</span> <span class="o">=</span> <span class="nf">read_sf</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="s">&quot;england_gor_2011&quot;</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">regions</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_sf</span><span class="p">()</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../_static/img/england_regions.png&quot;</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Saving 7 x 7 in image</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id1">
+<img alt="England regions" src="../_images/england_regions.png" />
+<p class="caption"><span class="caption-text">England regions</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Now lets have a look at the data (without the geometry):</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">regions</span> <span class="o">%&gt;%</span>
+  <span class="nf">st_set_geometry</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">glimpse</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Rows: 9</span>
+<span class="c1">## Columns: 3</span>
+<span class="c1">## $ code  &lt;chr&gt; &quot;E12000006&quot;, &quot;E12000007&quot;, &quot;E12000002&quot;, &quot;E12000001&quot;, &quot;E12000004&quot;,…</span>
+<span class="c1">## $ name  &lt;chr&gt; &quot;East of England&quot;, &quot;London&quot;, &quot;North West&quot;, &quot;North East&quot;, &quot;East M…</span>
+<span class="c1">## $ label &lt;chr&gt; &quot;E12000006&quot;, &quot;E12000007&quot;, &quot;E12000002&quot;, &quot;E12000001&quot;, &quot;E12000004&quot;,…</span>
+</pre></div>
+</div>
+<p>Dissolves with <code class="docutils literal notranslate"><span class="pre">sf()</span></code> do not save the data frame (other than the
+geometry column) by default without specifying how to aggregate the
+data. Using area as an example:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">regions</span><span class="o">$</span><span class="n">area</span> <span class="o">&lt;-</span> <span class="nf">st_area</span><span class="p">(</span><span class="n">regions</span><span class="p">)</span>
+<span class="n">regions</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Simple feature collection with 9 features and 4 fields</span>
+<span class="c1">## geometry type:  MULTIPOLYGON</span>
+<span class="c1">## dimension:      XY</span>
+<span class="c1">## bbox:           xmin: 82643.6 ymin: 5333.602 xmax: 655989 ymax: 657599.5</span>
+<span class="c1">## projected CRS:  OSGB 1936 / British National Grid</span>
+<span class="c1">## # A tibble: 9 x 5</span>
+<span class="c1">##   code    name        label                                    geometry     area</span>
+<span class="c1">## * &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;                          &lt;MULTIPOLYGON [m]&gt;    [m^2]</span>
+<span class="c1">## 1 E12000… East of En… E12000… (((547491 193549, 547472.1 193465.5, 547… 1957502…</span>
+<span class="c1">## 2 E12000… London      E12000… (((526048.4 161889.6, 526037.4 161893.6,…  159472…</span>
+<span class="c1">## 3 E12000… North West  E12000… (((392703.4 434383.5, 392681.8 434368.7,… 1491524…</span>
+<span class="c1">## 4 E12000… North East  E12000… (((420570.7 637160.3, 420570.6 637160.4,…  867641…</span>
+<span class="c1">## 5 E12000… East Midla… E12000… (((456472.5 274014.3, 456432.6 274084.3,… 1581475…</span>
+<span class="c1">## 6 E12000… Yorkshire … E12000… (((537480.1 415251.6, 537473.2 415261.1,… 1556415…</span>
+<span class="c1">## 7 E12000… South West  E12000… (((90195.03 10349.04, 90194.1 10345.7, 9… 2439226…</span>
+<span class="c1">## 8 E12000… West Midla… E12000… (((325576.3 238639.3, 325570.7 238655, 3… 1300380…</span>
+<span class="c1">## 9 E12000… South East  E12000… (((429042.2 84841.15, 429056.2 84832.6, … 1941297…</span>
+</pre></div>
+</div>
+<p>Now we have something some data that’s meaningful to group, we can just
+use <code class="docutils literal notranslate"><span class="pre">summarise()</span></code> to group the data and perform the dissolve:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">england</span> <span class="o">&lt;-</span>
+  <span class="n">regions</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span><span class="n">area</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">area</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">england</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_sf</span><span class="p">()</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../_static/img/england_dissolved.png&quot;</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Saving 7 x 7 in image</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id2">
+<img alt="England dissolved regions" src="../_images/england_dissolved.png" />
+<p class="caption"><span class="caption-text">England dissolved regions</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>If you don’t have or want data to save the dissolve just create a column
+to <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> so that the features (rows) that are to be grouped
+together are given the same data:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">england</span> <span class="o">&lt;-</span>
+  <span class="n">regions</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="s">&quot;england&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">country</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="original-rgdal-instructions">
+<h2>Original <code class="docutils literal notranslate"><span class="pre">rgdal</span></code> instructions<a class="headerlink" href="#original-rgdal-instructions" title="Permalink to this headline">¶</a></h2>
+<p>I’ve archived these in case but I strongly suggest using <code class="docutils literal notranslate"><span class="pre">sf</span></code> now for
+most GIS tasks in R, including dissolves.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a few packages. dplyr makes merges easier</span>
+<span class="nf">require</span><span class="p">(</span><span class="s">&quot;rgdal&quot;</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="s">&quot;rgeos&quot;</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use the original English regions shapefile downloaded above:</span>
+<span class="n">region</span> <span class="o">=</span> <span class="nf">readOGR</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="s">&quot;England_gor_2011&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check the shapefile has loaded correctly:</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># We&#39;re going to dissolve all regions in to one country (England!)</span>
+<span class="c1"># For this we&#39;ll create a lookup table and merge with the spatial data</span>
+<span class="c1"># Hopefully for your &#39;real&#39; data you have a lookup table of all polygons and</span>
+<span class="c1"># their larger geography already!</span>
+
+<span class="n">lu</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">()</span>
+<span class="n">lu</span> <span class="o">=</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">lu</span><span class="p">,</span> <span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="p">)</span>
+<span class="n">lu</span><span class="o">$</span><span class="n">CODE</span> <span class="o">=</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">CODE</span><span class="p">)</span>
+<span class="n">lu</span><span class="o">$</span><span class="n">NAME</span> <span class="o">=</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">NAME</span><span class="p">)</span>
+<span class="n">lu</span><span class="o">$</span><span class="n">country</span> <span class="o">=</span> <span class="kc">NA</span>
+<span class="n">lu</span><span class="o">$</span><span class="n">country</span> <span class="o">=</span> <span class="s">&quot;England&quot;</span>
+
+<span class="c1"># Merge</span>
+<span class="c1"># We now need to merge the lookup table into our spatial object data frame.</span>
+<span class="c1"># We should end up with one row per zone to dissolve, each with a reference for the relevant larger geography.</span>
+<span class="c1"># I think the trick is to make sure the row names match exactly, and if you can match the polygon IDs as well with spChFIDs().</span>
+<span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">CODE</span> <span class="o">=</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">CODE</span><span class="p">)</span>
+<span class="n">region</span><span class="o">@</span><span class="n">data</span> <span class="o">=</span> <span class="nf">full_join</span><span class="p">(</span><span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="p">,</span> <span class="n">lu</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;CODE&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tidy merged data</span>
+<span class="n">region</span><span class="o">@</span><span class="n">data</span> <span class="o">=</span> <span class="nf">select</span><span class="p">(</span><span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="p">,</span> <span class="o">-</span><span class="n">NAME.x</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;code&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;country&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ensure shapefile row.names and polygon IDs are sensible</span>
+<span class="nf">row.names</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">=</span> <span class="nf">row.names</span><span class="p">(</span><span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="p">)</span>
+<span class="n">region</span> <span class="o">=</span> <span class="nf">spChFIDs</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="nf">row.names</span><span class="p">(</span><span class="n">region</span><span class="p">))</span>
+
+<span class="c1"># Dissolve</span>
+<span class="c1"># I use gUnaryUnion() (and indeed I think unionSpatialPolygons() in the maptools package uses this by default).</span>
+<span class="n">region</span> <span class="o">=</span> <span class="nf">gUnaryUnion</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">region</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">country</span><span class="p">)</span>
+
+<span class="c1"># If you want to just plot this using base plot you can stop there.</span>
+<span class="c1"># If you want to do anything with the data or plot using ggplot you need to recreate the data frame.</span>
+
+<span class="c1"># If you want to recreate an object with a data frame make sure row names match</span>
+<span class="nf">row.names</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">=</span> <span class="nf">as.character</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">region</span><span class="p">))</span>
+
+<span class="c1"># Extract the data you want (the larger geography)</span>
+<span class="n">lu</span> <span class="o">=</span> <span class="nf">unique</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">country</span><span class="p">)</span>
+<span class="n">lu</span> <span class="o">=</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lu</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">lu</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;country&quot;</span>  <span class="c1"># your data will probably have more than 1 row!</span>
+
+<span class="c1"># And add the data back in</span>
+<span class="n">region</span> <span class="o">=</span> <span class="nf">SpatialPolygonsDataFrame</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">lu</span><span class="p">)</span>
+
+<span class="c1"># Check it&#39;s all worked</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># And your data frame should look like this:</span>
+<span class="n">region</span><span class="o">@</span><span class="n">data</span>
+
+<span class="c1">##   country</span>
+<span class="c1">## 1 England</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', ' UA-44027458-2', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
