@@ -33,6 +33,7 @@ knit:
 	pandoc tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.md -o tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
 	pandoc tutorials/2015-06-29-list-nomisweb-datasets-json.md -o tutorials/2015-06-29-list-nomisweb-datasets-json.rst
 	pandoc tutorials/2015-05-20-set-root-directory-knitr.md -o tutorials/2015-05-20-set-root-directory-knitr.rst
+	pandoc tutorials/2015-03-13-embed-google-map.md -o tutorials/2015-03-13-embed-google-map.rst
 
 .PHONY: help Makefile knit
 
