@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Clip polygons in R &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geocoding with Googleway" href="2017-05-30-geocoding-googleway.html" />
+    <link rel="prev" title="Dissolve polygons in R" href="2015-09-03-dissolve-polygons-in-r.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-19-group-figures-for-faster-review.html">Automate image layout for comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-09-29-simplify-polygons-without-creating-slivers.html">Simplify polygons without creating slivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2015-09-03-dissolve-polygons-in-r.html">Dissolve polygons in R</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clip polygons in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-12-spatial-packages-and-travis.html">Spatial packages and Travis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-14-creating-a-globe-in-qgis.html">Create a globe in QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-21-install-ubuntu-xenial-on-macbook-air.html">Install Ubuntu on Macbook Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Clip polygons in R</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2015-09-01-clip-polygons-r.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clip-polygons-in-r">
+<h1>Clip polygons in R<a class="headerlink" href="#clip-polygons-in-r" title="Permalink to this headline">¶</a></h1>
+<p>date: 2015-09-01</p>
+<p>Clipping polygons is a common GIS task. For example, you might want to
+study local authorities (LADs) in the Yorkshire and the Humber region
+but can only obtain a shapefile with all the LADs in England. Removing
+all the LADs outside of the Yorkshire and the Humber can be achieved by
+‘clipping’ the LADs, using the extent of the larger region as a
+template.</p>
+<p>First, install and load <code class="docutils literal notranslate"><span class="pre">sf</span></code> for loading the shapefiles, and
+<code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> for manipulating the data and plotting the maps.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;dplyr&quot;)</span>
+<span class="c1"># install.packages(&quot;ggplot2&quot;)</span>
+<span class="c1"># install.packages(&quot;sf&quot;)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##</span>
+<span class="c1">## Attaching package: &#39;dplyr&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## The following objects are masked from &#39;package:stats&#39;:</span>
+<span class="c1">##</span>
+<span class="c1">##     filter, lag</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## The following objects are masked from &#39;package:base&#39;:</span>
+<span class="c1">##</span>
+<span class="c1">##     intersect, setdiff, setequal, union</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1</span>
+</pre></div>
+</div>
+<p>Then download and unzip our test data (shapefiles of English regions and
+local authorities):</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_dir</span> <span class="o">=</span> <span class="nf">tempdir</span><span class="p">()</span>
+
+<span class="c1"># a region shapefile for England ~6MB</span>
+<span class="n">tmp_reg</span> <span class="o">=</span> <span class="nf">tempfile</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">fileext</span> <span class="o">=</span> <span class="s">&quot;.zip&quot;</span><span class="p">)</span>
+<span class="nf">download.file</span><span class="p">(</span>
+  <span class="s">&quot;https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip&quot;</span><span class="p">,</span>
+  <span class="n">destfile</span> <span class="o">=</span> <span class="n">tmp_reg</span>
+<span class="p">)</span>
+<span class="nf">unzip</span><span class="p">(</span><span class="n">tmp_reg</span><span class="p">,</span> <span class="n">exdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">)</span>
+
+<span class="c1"># local authorities for England ~</span>
+<span class="n">tmp_lad</span> <span class="o">=</span> <span class="nf">tempfile</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">fileext</span> <span class="o">=</span> <span class="s">&quot;.zip&quot;</span><span class="p">)</span>
+<span class="nf">download.file</span><span class="p">(</span>
+  <span class="s">&quot;https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip&quot;</span><span class="p">,</span>
+  <span class="n">destfile</span> <span class="o">=</span> <span class="n">tmp_lad</span>
+<span class="p">)</span>
+<span class="nf">unzip</span><span class="p">(</span><span class="n">tmp_lad</span><span class="p">,</span> <span class="n">exdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now load these files ready for clipping:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="nf">read_sf</span><span class="p">(</span>  <span class="c1"># regions</span>
+  <span class="n">dsn</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span>
+  <span class="n">layer</span> <span class="o">=</span> <span class="s">&quot;england_gor_2011&quot;</span>
+<span class="p">)</span>
+
+<span class="n">lad</span> <span class="o">=</span> <span class="nf">read_sf</span><span class="p">(</span>  <span class="c1"># Local Authority District</span>
+  <span class="n">dsn</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span>
+  <span class="n">layer</span> <span class="o">=</span> <span class="s">&quot;england_lad_2011&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s check these have loaded correctly with a plot:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">lad</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&quot;light gray&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">reg</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&quot;dark gray&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../_static/img/regions-plot.png&quot;</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Saving 7 x 7 in image</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id1">
+<img alt="Regions plots" src="../_images/regions-plot.png" />
+<p class="caption"><span class="caption-text">Regions plots</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>To clip the LADs to a region, use <code class="docutils literal notranslate"><span class="pre">sf::st_contains()</span></code> with
+<code class="docutils literal notranslate"><span class="pre">sparse</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> argument:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">yh</span> <span class="o">=</span>
+  <span class="n">reg</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;Yorkshire and The Humber&quot;</span><span class="p">)</span>
+
+<span class="n">yh_lads</span> <span class="o">=</span>
+  <span class="n">lad</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="nf">st_contains</span><span class="p">(</span><span class="n">yh</span><span class="p">,</span> <span class="n">.</span><span class="p">,</span> <span class="n">sparse</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And a plot to check the clip succeeded:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_sf</span><span class="p">()</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../_static/img/yh-lads.png&quot;</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Saving 7 x 7 in image</span>
+</pre></div>
+</div>
+<p>We can also check the data are still included in the <code class="docutils literal notranslate"><span class="pre">yh_lads</span></code> object
+(without the geometry):</p>
+<div class="figure align-default" id="id2">
+<img alt="Yorkshire and The Humber LADs" src="../_images/yh-lads.png" />
+<p class="caption"><span class="caption-text">Yorkshire and The Humber LADs</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="original-post-rgdal">
+<h2>Original post (<code class="docutils literal notranslate"><span class="pre">rgdal</span></code>)<a class="headerlink" href="#original-post-rgdal" title="Permalink to this headline">¶</a></h2>
+<p>I’ve archived the original post based on <code class="docutils literal notranslate"><span class="pre">rgdal</span></code> and reproduced the
+instructions below, but I strongly recommend using <code class="docutils literal notranslate"><span class="pre">sf</span></code> for new code.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;rgdal&quot;) # uncomment and run if not already installed</span>
+<span class="c1"># install.packages(&quot;rgeos&quot;)</span>
+
+<span class="c1"># If you run in to trouble installing rgdal and rgeos on Linux (Ubuntu) see:</span>
+<span class="c1"># https://philmikejones.me/post/2014-07-14-installing-rgdal-in-r-on-linux/</span>
+
+<span class="nf">require</span><span class="p">(</span><span class="s">&quot;rgdal&quot;</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="s">&quot;rgeos&quot;</span><span class="p">)</span>
+
+
+<span class="n">tmp_dir</span> <span class="o">=</span> <span class="nf">tempdir</span><span class="p">()</span>
+
+<span class="n">tmp_reg</span> <span class="o">=</span> <span class="nf">tempfile</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">fileext</span> <span class="o">=</span> <span class="s">&quot;.zip&quot;</span><span class="p">)</span>
+<span class="nf">download.file</span><span class="p">(</span>
+  <span class="s">&quot;https://census.edina.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip&quot;</span><span class="p">,</span>
+  <span class="n">destfile</span> <span class="o">=</span> <span class="n">tmp_reg</span>
+<span class="p">)</span>  <span class="c1"># ~6.4MB</span>
+
+<span class="n">tmp_lad</span> <span class="o">=</span> <span class="nf">tempfile</span><span class="p">(</span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">fileext</span> <span class="o">=</span> <span class="s">&quot;.zip&quot;</span><span class="p">)</span>
+<span class="nf">download.file</span><span class="p">(</span>
+  <span class="s">&quot;https://census.edina.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip&quot;</span><span class="p">,</span>
+  <span class="n">destfile</span> <span class="o">=</span> <span class="n">tmp_lad</span>
+<span class="p">)</span>  <span class="c1"># ~25MB</span>
+<span class="nf">unzip</span><span class="p">(</span><span class="n">tmp_reg</span><span class="p">,</span> <span class="n">exdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">)</span>
+<span class="nf">unzip</span><span class="p">(</span><span class="n">tmp_lad</span><span class="p">,</span> <span class="n">exdir</span> <span class="o">=</span> <span class="n">tmp_dir</span><span class="p">)</span>
+
+<span class="c1"># I recommend loading the shapefiles with readOGR() in the rgdal package</span>
+
+<span class="n">regions</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="s">&quot;england_gor_2011&quot;</span><span class="p">)</span>
+<span class="n">lads</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&quot;england_lad_2011&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract Yorkshire and the Humber</span>
+<span class="n">regions</span> <span class="o">&lt;-</span> <span class="n">regions</span><span class="p">[</span><span class="n">regions</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;Yorkshire and The Humber&quot;</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="c1"># Clip the LADs</span>
+<span class="n">yh_lads</span> <span class="o">&lt;-</span> <span class="nf">gIntersection</span><span class="p">(</span><span class="n">regions</span><span class="p">,</span> <span class="n">lads</span><span class="p">,</span> <span class="n">byid</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">drop_lower_td</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+
+<span class="c1"># Easy, but we&#39;re not finished yet.</span>
+<span class="c1"># The clipped polygons no longer contain a data frame because the gIntersection</span>
+<span class="c1"># doesn&#39;t (and can&#39;t) know which data frame items to save in to the new object.</span>
+<span class="c1"># This means we must add them back in manually, but even this is relatively</span>
+<span class="c1"># straight-forward.</span>
+
+<span class="c1"># Recreate the data frame</span>
+<span class="c1"># The row names for the clipped polygons are a concatenation of the regions row</span>
+<span class="c1"># name and the LAD row names. These are in the form x yyyy where x is the</span>
+<span class="c1"># region row name (in our case always 5, because Yorkshire and The Humber was</span>
+<span class="c1"># row 5) and yyyy is the LAD row name.</span>
+<span class="nf">row.names</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;5 &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">row.names</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">))</span>
+
+<span class="n">keep</span> <span class="o">&lt;-</span> <span class="nf">row.names</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">)</span>
+
+<span class="c1"># For the sake of simplicity I also change the polygon IDs so they are</span>
+<span class="c1"># consistent with their respective row names. This step is probably optional,</span>
+<span class="c1"># but I prefer to ensure they match so I have a consistent set of IDs to work</span>
+<span class="c1"># with later on. If you choose not to do this I don&#39;t think you&#39;ll run into</span>
+<span class="c1"># any problems but YMMV</span>
+<span class="n">yh_lads</span> <span class="o">&lt;-</span> <span class="nf">spChFIDs</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">,</span> <span class="n">keep</span><span class="p">)</span>
+
+<span class="c1"># Now we create a copy of the LAD dataframe and filter it so that it only</span>
+<span class="c1">#  contains the rows we want to keep, using row names to perform the match:</span>
+<span class="n">yh_data</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lads</span><span class="o">@</span><span class="n">data</span><span class="p">[</span><span class="n">keep</span><span class="p">,</span> <span class="p">])</span>
+
+<span class="c1"># Finally we create a SpatialPolygonsDataFrame object with our clipped polygons</span>
+<span class="c1">#  and our subsetted data frame:</span>
+<span class="n">yh_lads</span> <span class="o">&lt;-</span> <span class="nf">SpatialPolygonsDataFrame</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">,</span> <span class="n">yh_data</span><span class="p">)</span>
+
+<span class="c1"># Check it worked with a plot</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">yh_lads</span><span class="p">)</span>
+
+<span class="c1"># and check the attributes:</span>
+<span class="n">yh_lads</span><span class="o">@</span><span class="n">data</span>
+<span class="c1">##           CODE                        NAME ALTNAME</span>
+<span class="c1">##  2   E07000164                   Hambleton</span>
+<span class="c1">##  8   E07000169                       Selby</span>
+<span class="c1">##  9   E08000017                   Doncaster</span>
+<span class="c1">##  37  E07000168                 Scarborough</span>
+<span class="c1">##  39  E08000032                    Bradford</span>
+<span class="c1">##  43  E07000165                   Harrogate</span>
+<span class="c1">##  105 E07000167                     Ryedale</span>
+<span class="c1">##  124 E07000166               Richmondshire</span>
+<span class="c1">##  162 E06000012     North East Lincolnshire</span>
+<span class="c1">##  165 E08000035                       Leeds</span>
+<span class="c1">##  175 E07000163                      Craven</span>
+<span class="c1">##  204 E08000033                  Calderdale</span>
+<span class="c1">##  207 E06000013          North Lincolnshire</span>
+<span class="c1">##  214 E08000019                   Sheffield</span>
+<span class="c1">##  225 E06000010 Kingston upon Hull, City of</span>
+<span class="c1">##  245 E06000011    East Riding of Yorkshire</span>
+<span class="c1">##  248 E06000014                        York</span>
+<span class="c1">##  251 E08000036                   Wakefield</span>
+<span class="c1">##  254 E08000034                    Kirklees</span>
+<span class="c1">##  297 E08000016                    Barnsley</span>
+<span class="c1">##  320 E08000018                   Rotherham</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', ' UA-44027458-2', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

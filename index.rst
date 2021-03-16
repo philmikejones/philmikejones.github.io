@@ -26,6 +26,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2017-05-19-group-figures-for-faster-review.rst
    tutorials/2016-09-29-simplify-polygons-without-creating-slivers.rst
    tutorials/2015-09-03-dissolve-polygons-in-r.rst
+   tutorials/2015-09-01-clip-polygons-r.rst
    tutorials/2017-05-30-geocoding-googleway.rst
    tutorials/2018-08-29-install-sf-ubuntu.rst
    tutorials/2017-05-12-spatial-packages-and-travis.rst
