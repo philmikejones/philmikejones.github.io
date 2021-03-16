@@ -32,6 +32,7 @@ knit:
 	pandoc tutorials/2015-09-01-clip-polygons-r.md -o tutorials/2015-09-01-clip-polygons-r.rst
 	pandoc tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.md -o tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
 	pandoc tutorials/2015-06-29-list-nomisweb-datasets-json.md -o tutorials/2015-06-29-list-nomisweb-datasets-json.rst
+	pandoc tutorials/2015-05-20-set-root-directory-knitr.md -o tutorials/2015-05-20-set-root-directory-knitr.rst
 
 .PHONY: help Makefile knit
 
