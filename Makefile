@@ -30,6 +30,7 @@ knit:
 	pandoc tutorials/2015-09-03-dissolve-polygons-in-r.md -o tutorials/2015-09-03-dissolve-polygons-in-r.rst
 	# Rscript -e 'knitr::knit("tutorials/2015-09-01-clip-polygons-r.Rmd", "tutorials/2015-09-01-clip-polygons-r.md")'
 	pandoc tutorials/2015-09-01-clip-polygons-r.md -o tutorials/2015-09-01-clip-polygons-r.rst
+	pandoc tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.md -o tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
 
 .PHONY: help Makefile knit
 

@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configure ssh server with encrypted home directory &mdash; philmikejones  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Install Zotero on Ubuntu" href="2020-01-07-install-zotero-ubuntu.html" />
+    <link rel="prev" title="Create a globe in QGIS" href="2016-07-14-creating-a-globe-in-qgis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> philmikejones
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-04-09-test-your-data.html">Test your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-19-group-figures-for-faster-review.html">Automate image layout for comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-09-29-simplify-polygons-without-creating-slivers.html">Simplify polygons without creating slivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2015-09-03-dissolve-polygons-in-r.html">Dissolve polygons in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2015-09-01-clip-polygons-r.html">Clip polygons in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2017-05-12-spatial-packages-and-travis.html">Spatial packages and Travis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-14-creating-a-globe-in-qgis.html">Create a globe in QGIS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure ssh server with encrypted home directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2016-07-21-install-ubuntu-xenial-on-macbook-air.html">Install Ubuntu on Macbook Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">philmikejones</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Configure ssh server with encrypted home directory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-ssh-server-with-encrypted-home-directory">
+<h1>Configure ssh server with encrypted home directory<a class="headerlink" href="#configure-ssh-server-with-encrypted-home-directory" title="Permalink to this headline">¶</a></h1>
+<p>date: 2015-07-17</p>
+<p>The following instructions are to set up an ssh server on Ubuntu linux
+with an encrypted home directory.</p>
+<p>Throughout <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> refers to an actual username like <code class="docutils literal notranslate"><span class="pre">phil</span></code>.</p>
+<p>Install OpenSSH server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install openssh-server
+</pre></div>
+</div>
+<p>Create a backup of <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> (NOT <code class="docutils literal notranslate"><span class="pre">ssh_config</span></code>, note the <code class="docutils literal notranslate"><span class="pre">d</span></code>)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+</pre></div>
+</div>
+<p>Configure <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> to initially accept password logins:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+sudo gedit /etc/ssh/sshd_config
+</pre></div>
+</div>
+<p>Change the line <code class="docutils literal notranslate"><span class="pre">#PasswordAuthentication</span> <span class="pre">yes</span></code> to read
+<code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> (i.e. remove the #) and only allow
+certain users:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PasswordAuthentication yes
+AllowUsers &lt;username&gt;
+</pre></div>
+</div>
+<p>Finally tell the configuration file to look in
+<code class="docutils literal notranslate"><span class="pre">/etc/ssh/username/authorized_keys</span></code> for client keys. The default is to
+look in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code> which is no good because this is encrypted until
+you’ve logged in! Change <code class="docutils literal notranslate"><span class="pre">AuthorizedKeysFile</span></code> to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>AuthorizedKeysFile    /etc/s../_static/authorized_keys
+</pre></div>
+</div>
+<p>Close <code class="docutils literal notranslate"><span class="pre">gedit</span></code>. Restart the ssh server with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service ssh restart
+</pre></div>
+</div>
+<p>Next create the <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file and give it the appropriate
+permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir /etc/ssh/&lt;username&gt;/
+sudo chown username /etc/ssh/&lt;username&gt;
+sudo chmod <span class="m">755</span> /etc/ssh/&lt;username&gt;
+sudo touch /etc/ssh/&lt;username&gt;/authorized_keys
+sudo chown username /etc/ssh/&lt;username&gt;/authorized_keys
+sudo chmod <span class="m">644</span> /etc/ssh/&lt;username&gt;/authorized_keys
+</pre></div>
+</div>
+<p>Then copy the client’s public key to <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code>. The easiest
+way to do that is to ssh in to the server (which is why we allowed
+password logins earlier) and do it from there. So from the client:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano ~/.ssh/id_rsa.pub
+</pre></div>
+</div>
+<p>Copy the key to the clipboard then:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh username.host.tld
+</pre></div>
+</div>
+<p>Enter log in password when prompted, then:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano /etc/ssh/username/authorized_keys  <span class="c1"># Paste the key here and save</span>
+</pre></div>
+</div>
+<p>Then logout:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">logout</span>
+</pre></div>
+</div>
+<p>Disable password logins from <code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code> and restart the
+ssh server (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">ssh</span> <span class="pre">restart</span></code> from the server). Log in is now
+done using the ssh keys and without prompting for a password. The client
+will prompt to see if the public key fingerprint sent from the server is
+correct and to add it to the white list. Check it’s right by running
+<code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-l</span> <span class="pre">-f</span> <span class="pre">/etc/ssh/ssh_host_rsa_key</span></code> on the server.</p>
+<div class="section" id="sources">
+<h2>Sources:<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys">https://help.ubuntu.com/community/SSH/OpenSSH/Keys</a></p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/SSH/OpenSSH/Configuring">https://help.ubuntu.com/community/SSH/OpenSSH/Configuring</a></p></li>
+<li><p><a class="reference external" href="http://stackoverflow.com/questions/14301519/how-to-copy-pub-file-to-ssh-authoized-key">http://stackoverflow.com/questions/14301519/how-to-copy-pub-file-to-ssh-authoized-key</a>&gt;</p></li>
+<li><p><a class="reference external" href="http://ubuntuforums.org/showthread.php?t=789301">http://ubuntuforums.org/showthread.php?t=789301</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Phil Mike Jones.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', ' UA-44027458-2', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

@@ -32,6 +32,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2017-05-12-spatial-packages-and-travis.rst
    tutorials/2019-01-03-install-qgis-ubuntu.rst
    tutorials/2016-07-14-creating-a-globe-in-qgis.rst
+   tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
    tutorials/2016-07-21-install-ubuntu-xenial-on-macbook-air.rst
    tutorials/2018-09-04-commissioning-research.rst
