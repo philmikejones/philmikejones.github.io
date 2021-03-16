@@ -47,6 +47,14 @@ You can see my publications on my `ORCiD profile <https://orcid.org/0000-0001-51
 
 
 ************
+Code
+************
+
+- Stackoverflow: `users/3022126/phil <https://stackoverflow.com/users/3022126/phil>`__
+- Github: `philmikejones <https://github.com/philmikejones>`__
+- Gitlab: `philmikejones <https://gitlab.com/philmikejones>`__
+
+************
 Teaching
 ************
 
