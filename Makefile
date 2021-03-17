@@ -35,6 +35,7 @@ knit:
 	pandoc tutorials/2015-05-20-set-root-directory-knitr.md -o tutorials/2015-05-20-set-root-directory-knitr.rst
 	pandoc tutorials/2015-03-13-embed-google-map.md -o tutorials/2015-03-13-embed-google-map.rst
 	pandoc tutorials/2015-02-27-glossary-acronyms-latex.md -o tutorials/2015-02-27-glossary-acronyms-latex.rst
+	pandoc tutorials/2015-01-27-build-large-maps-with-openstreetmap.md -o tutorials/2015-01-27-build-large-maps-with-openstreetmap.rst
 
 .PHONY: help Makefile knit
 

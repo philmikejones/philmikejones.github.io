@@ -34,6 +34,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2017-05-12-spatial-packages-and-travis.rst
    tutorials/2019-01-03-install-qgis-ubuntu.rst
    tutorials/2016-07-14-creating-a-globe-in-qgis.rst
+   tutorials/2015-01-27-build-large-maps-with-openstreetmap.rst
    tutorials/2015-03-13-embed-google-map.rst
    tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
