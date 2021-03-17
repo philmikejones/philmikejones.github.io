@@ -1,15 +1,11 @@
 
-title: Telephone Interviewing
-date: 2010-08-11
+# Telephone Interviewing
 
-categories:
-  - tutorials
+date: 2010-08-11
 
 
 Conducting interviews over the telephone presents a few unique challenges, compared to interviewing in person.
 Here are my recommendations for recording the interview and obtaining informed consent.
-
-
 
 ## Recording
 
