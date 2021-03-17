@@ -31,6 +31,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2015-06-29-list-nomisweb-datasets-json.rst
    tutorials/2015-05-20-set-root-directory-knitr.rst
    tutorials/2018-08-29-install-sf-ubuntu.rst
+   tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst
    tutorials/2017-05-12-spatial-packages-and-travis.rst
    tutorials/2019-01-03-install-qgis-ubuntu.rst
    tutorials/2016-07-14-creating-a-globe-in-qgis.rst

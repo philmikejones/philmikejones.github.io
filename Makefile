@@ -38,6 +38,7 @@ knit:
 	pandoc tutorials/2015-01-27-build-large-maps-with-openstreetmap.md -o tutorials/2015-01-27-build-large-maps-with-openstreetmap.rst
 	pandoc tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.md -o tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst
 	pandoc tutorials/2014-11-21-obtaining-date-webpage.md -o tutorials/2014-11-21-obtaining-date-webpage.rst
+	pandoc tutorials/2014-07-14-installing-rgdal-in-r-on-linux.md -o tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst
 
 .PHONY: help Makefile knit
 

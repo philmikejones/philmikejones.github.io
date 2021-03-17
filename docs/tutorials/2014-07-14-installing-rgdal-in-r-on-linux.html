@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>List Nomisweb Datasets with JSON &mdash; philmikejones  documentation</title>
+  <title>Installing RGDAL and RGEOS in R on Linux &mdash; philmikejones  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Set root directory for knitr" href="2015-05-20-set-root-directory-knitr.html" />
-    <link rel="prev" title="Geocoding with Googleway" href="2017-05-30-geocoding-googleway.html" /> 
+    <link rel="next" title="Spatial packages and Travis" href="2017-05-12-spatial-packages-and-travis.html" />
+    <link rel="prev" title="Install sf package in Ubuntu" href="2018-08-29-install-sf-ubuntu.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,10 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="2015-09-03-dissolve-polygons-in-r.html">Dissolve polygons in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2015-09-01-clip-polygons-r.html">Clip polygons in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">List Nomisweb Datasets with JSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2015-06-29-list-nomisweb-datasets-json.html">List Nomisweb Datasets with JSON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2015-05-20-set-root-directory-knitr.html">Set root directory for knitr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2014-07-14-installing-rgdal-in-r-on-linux.html">Installing RGDAL and RGEOS in R on Linux</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing RGDAL and RGEOS in R on Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2017-05-12-spatial-packages-and-travis.html">Spatial packages and Travis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2016-07-14-creating-a-globe-in-qgis.html">Create a globe in QGIS</a></li>
@@ -158,13 +158,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>List Nomisweb Datasets with JSON</li>
+      <li>Installing RGDAL and RGEOS in R on Linux</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/tutorials/2015-06-29-list-nomisweb-datasets-json.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,44 +177,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="list-nomisweb-datasets-with-json">
-<h1>List Nomisweb Datasets with JSON<a class="headerlink" href="#list-nomisweb-datasets-with-json" title="Permalink to this headline">¶</a></h1>
-<p>date: 2015-06-29</p>
-<p>You can use the <a class="reference external" href="https://www.nomisweb.co.uk/api/v01/help">Nomisweb
-API</a> to discover (list)
-datasets and to obtain them once you have identified what you need. The
-API supports a variety of formats but in this tutorial I use
-<a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> because it’s less verbose
-than other formats so is a smaller file.</p>
-<div class="section" id="jq-and-curl">
-<h2><code class="docutils literal notranslate"><span class="pre">jq</span></code> and <code class="docutils literal notranslate"><span class="pre">curl</span></code><a class="headerlink" href="#jq-and-curl" title="Permalink to this headline">¶</a></h2>
-<p>To list all the available datasets I used a programme called <code class="docutils literal notranslate"><span class="pre">jq</span></code>
-(‘Json Query’ I assume). You can install <code class="docutils literal notranslate"><span class="pre">jq</span></code> on an Ubuntu machine
-with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">jq</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">jq</span></code>. You should
-install a version &gt;= 1.5. You will also need <code class="docutils literal notranslate"><span class="pre">curl</span></code>
-(<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">curl</span></code>).</p>
-<p>The following script uses curl and jq to obtain and filter the results,
-retaining ID, name, and description. It then saves the output to
-<code class="docutils literal notranslate"><span class="pre">nomisweb-datasets.txt</span></code>:</p>
-<script src="https://gist.github.com/philmikejones/99580cdc638611c0060b.js"></script><ul class="simple">
-<li><p>Line 1 specifies which shell to use.</p></li>
-<li><p>Line 2 specifies the relevant json file listing all the datasets,
-specified in the API documentation.</p></li>
-<li><p>Line 3 is a series of filters piped together. It essentially obtains
-everything; then filters out everything but <code class="docutils literal notranslate"><span class="pre">keyfamilies</span></code> at that
-level; then filters everything but <code class="docutils literal notranslate"><span class="pre">keyfamily</span></code> (it just so happens
-there’s nothing to filter at that level); then obtains all datasets
-(‘<code class="docutils literal notranslate"><span class="pre">.[]</span></code>’); before finally extracting the id, name, and description
-from each index.</p></li>
-<li><p>Line 4 saves this to the file rather than print it to the terminal
-window as is the default.</p></li>
-</ul>
+  <div class="section" id="installing-rgdal-and-rgeos-in-r-on-linux">
+<h1>Installing RGDAL and RGEOS in R on Linux<a class="headerlink" href="#installing-rgdal-and-rgeos-in-r-on-linux" title="Permalink to this headline">¶</a></h1>
+<p>date: 2014-07-14</p>
+<div class="section" id="rgdal">
+<h2>RGDAL<a class="headerlink" href="#rgdal" title="Permalink to this headline">¶</a></h2>
+<p>The RGDAL package is used by R and RStudio to plot maps. Under Linux you
+may encounter one or two errors when trying to install the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">gdal</span><span class="o">-</span><span class="n">config</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">gdal</span><span class="o">-</span><span class="n">config</span> <span class="n">script</span> <span class="n">distributed</span> <span class="k">with</span> <span class="n">GDAL</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">found</span><span class="o">.</span>
+</pre></div>
 </div>
-<div class="section" id="nomisr">
-<h2><code class="docutils literal notranslate"><span class="pre">nomisr</span></code><a class="headerlink" href="#nomisr" title="Permalink to this headline">¶</a></h2>
-<p>If you’re an R user, querying and obtaining data from the Nomis API is
-now even easier with the <code class="docutils literal notranslate"><span class="pre">`nomisr</span></code>
-package &lt;<a class="reference external" href="https://docs.evanodell.com/nomisr/">https://docs.evanodell.com/nomisr/</a>&gt;`__.</p>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configure</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">proj_api</span><span class="o">.</span><span class="n">h</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">standard</span> <span class="ow">or</span> <span class="n">given</span> <span class="n">locations</span><span class="o">.</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">configuration</span> <span class="n">failed</span> <span class="k">for</span> <span class="n">package</span> <span class="s1">&#39;rgdal&#39;</span>
+</pre></div>
+</div>
+<p>You experience these errors because R in Linux installs the packages
+from source (rather than a ready-compiled binary) and you need
+additional libraries to compile RGDAL. Essentially, the packages
+<code class="docutils literal notranslate"><span class="pre">libgdal-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libproj-dev</span></code> are required and may be missing. To
+install them on an Ubuntu system open a terminal (CTRL+ALT+T) and type
+(or copy and paste):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgdal</span><span class="o">-</span><span class="n">dev</span> <span class="n">libproj</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>To ensure you package lists are up to date and then installs the
+required packages. Once these are installed on your system you can
+install the RGDAL package by running the following code inside R:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;rgdal&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rgeos">
+<h2>RGEOS<a class="headerlink" href="#rgeos" title="Permalink to this headline">¶</a></h2>
+<p>RGEOS is another essential GIS package in R, even though it tends to be
+called by other functions and you are not likely to call <code class="docutils literal notranslate"><span class="pre">rgeos</span></code>
+functions directly. If you see the following error when you try to
+install rgeos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>checking geos: linking with libgeos_c... no
+/usr/bin/ld: cannot find -lgeos
+collect2: error: ld returned 1 exit status
+configure: Install failure: compilation and/or linkage problems.
+configure: error: initGEOS_r not found in libgeos_c.
+ERROR: configuration failed for package ‘rgeos’
+</pre></div>
+</div>
+<p>You should install <code class="docutils literal notranslate"><span class="pre">libgeos++-dev</span></code> with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libgeos</span><span class="o">++</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>You should now be able to install rgeos in R as normal with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;rgeos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Job done.</p>
+</div>
+<div class="section" id="sources">
+<h2>Sources:<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://stackoverflow.com/questions/12141422/error-gdal-config-not-found">http://stackoverflow.com/questions/12141422/error-gdal-config-not-found</a>
+<a class="reference external" href="http://stackoverflow.com/questions/15248815/rgdal-package-installation">http://stackoverflow.com/questions/15248815/rgdal-package-installation</a></p>
 </div>
 </div>
 
