@@ -37,6 +37,7 @@ knit:
 	pandoc tutorials/2015-02-27-glossary-acronyms-latex.md -o tutorials/2015-02-27-glossary-acronyms-latex.rst
 	pandoc tutorials/2015-01-27-build-large-maps-with-openstreetmap.md -o tutorials/2015-01-27-build-large-maps-with-openstreetmap.rst
 	pandoc tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.md -o tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst
+	pandoc tutorials/2014-11-21-obtaining-date-webpage.md -o tutorials/2014-11-21-obtaining-date-webpage.rst
 
 .PHONY: help Makefile knit
 
