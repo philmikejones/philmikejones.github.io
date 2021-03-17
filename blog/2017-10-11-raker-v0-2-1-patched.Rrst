@@ -1,0 +1,7 @@
+<h1 id="raker-v0.2.1-patched">rakeR v0.2.1 patched</h1>
+<p>date: ‘2017-10-11’</p>
+<p>I’ve patched <code>rakeR</code> on CRAN to v0.2.1 to fix a couple of problems in the examples and tests, which were using old labels and failing on some machines (thanks to Derek Atherton for the feedback).</p>
+<p>I’ve also updated the <a href="https://philmikejones.github.io/rakeR/">documentation website</a> to use the new <code>pkgdown</code> template to be consistent with other <code>R</code> packages, most notably the tidyverse.</p>
+<p>And, that’s about it. If you’re using v0.2.0 and are happy there are no changes to the API to worry about.</p>
+<p>As always, install/update with:</p>
+<p><code>{r eval=FALSE} install.packages("rakeR")</code></p>

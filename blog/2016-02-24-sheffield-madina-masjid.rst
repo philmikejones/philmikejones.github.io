@@ -1,0 +1,188 @@
+Sheffield Madina Masjid
+=======================
+
+date: 2016-02-24
+
+A couple of weeks ago I had the privilege of visiting the `Madina
+Masjid <http://www.madinamasjid.org.uk/>`__ in Sheffield, taking a group
+of undergraduate students as part of the social science `Achieve
+More <http://www.sheffield.ac.uk/undergraduate/why/achieve-more>`__
+week. I’d never been inside a mosque before despite visiting a couple,
+so was genuinely excited to be shown around. Our tour guide, Zahid,
+showed the group the facilities, starting with the wash rooms where he
+showed us how Muslims performs their
+`ablutions <https://en.wikipedia.org/wiki/Wudu>`__ before prayer.
+
+.. raw:: html
+
+   <figure id="attachment_1759" class="thumbnail wp-caption aligncenter" style="width: 644px">
+
+<img class=“wp-image-1759 size-large”
+src="https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001-1024x731.jpg?fit=634%2C453"
+alt=“Masjid entrance”
+srcset="https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?w=1400
+1400w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?resize=300%2C214
+300w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?resize=768%2C549
+768w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?resize=1024%2C731
+1024w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?resize=660%2C471
+660w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0001.jpg?w=1296
+1296w" sizes=“(max-width: 634px) 100vw, 634px”
+data-recalc-dims="1../_static/a>
+
+.. raw:: html
+
+   <figcaption class="caption wp-caption-text">
+
+Masjid entrance
+
+.. raw:: html
+
+   </figcaption>
+
+.. raw:: html
+
+   </figure>
+
+The mosque had a small library with a collection of books for children
+learning Arabic (among others, I’m sure), as well as several copies of
+the Quran. Zahid showed us an edition with beautiful calligraphy which I
+didn’t dare handle or take a photograph of, but I did take a photograph
+of one of the editions in the classroom:
+
+.. raw:: html
+
+   <figure id="attachment_1755" class="thumbnail wp-caption aligncenter" style="width: 644px">
+
+<img class=“wp-image-1755 size-large”
+src="https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005-1024x731.jpg?fit=634%2C453"
+alt=“Quran”
+srcset="https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?w=1400
+1400w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?resize=300%2C214
+300w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?resize=768%2C549
+768w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?resize=1024%2C731
+1024w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?resize=660%2C471
+660w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0005.jpg?w=1296
+1296w" sizes=“(max-width: 634px) 100vw, 634px”
+data-recalc-dims="1../_static/a>
+
+.. raw:: html
+
+   <figcaption class="caption wp-caption-text">
+
+Quran
+
+.. raw:: html
+
+   </figcaption>
+
+.. raw:: html
+
+   </figure>
+
+After the library Zahid showed us the main prayer rooms. These were laid
+out so prayers face the `Kaaba <https://en.wikipedia.org/wiki/Kaaba>`__
+in Mecca and were ornately decorated, with the upstairs prayer room
+housing an immense gold chandelier:
+
+.. raw:: html
+
+   <figure id="attachment_1756" class="thumbnail wp-caption aligncenter" style="width: 644px">
+
+<img class=“wp-image-1756 size-large”
+src="https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004-1024x640.jpg?fit=634%2C396"
+alt=“Chandelier”
+srcset="https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?w=1600
+1600w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?resize=300%2C188
+300w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?resize=768%2C480
+768w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?resize=1024%2C640
+1024w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?resize=660%2C413
+660w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0004.jpg?w=1296
+1296w" sizes=“(max-width: 634px) 100vw, 634px”
+data-recalc-dims="1../_static/a>
+
+.. raw:: html
+
+   <figcaption class="caption wp-caption-text">
+
+Chandelier
+
+.. raw:: html
+
+   </figcaption>
+
+.. raw:: html
+
+   </figure>
+
+The Islamic calendar is based on the moon and the times of daily
+activities are based on sunrise and sunet, so the times and dates of key
+events (such as prayer) do not align with a consistent time and date in
+the Gregorian calendar. As the Gregorian calendar is dominant in most
+Western countries (and the sun rises and sets at different times
+depending on the season!), the prayer room listed all the prayer times
+for the coming week:
+
+.. raw:: html
+
+   <figure id="attachment_1758" class="thumbnail wp-caption aligncenter" style="width: 644px">
+
+<img class=“size-large wp-image-1758”
+src="https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002-1024x731.jpg?fit=634%2C453"
+alt=“Prayer times”
+srcset="https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?w=1400
+1400w,
+https://i0.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?resize=300%2C214
+300w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?resize=768%2C549
+768w,
+https://i1.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?resize=1024%2C731
+1024w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?resize=660%2C471
+660w,
+https://i2.wp.com/philmikejones.me/wp-content/uploads/20../_static/mosque-web_0002.jpg?w=1296
+1296w" sizes=“(max-width: 634px) 100vw, 634px”
+data-recalc-dims="1../_static/a>
+
+.. raw:: html
+
+   <figcaption class="caption wp-caption-text">
+
+Prayer times
+
+.. raw:: html
+
+   </figcaption>
+
+.. raw:: html
+
+   </figure>
+
+The visit was truly fascinating as I didn’t (and still don’t) know much
+about Islam so to glean an insight into the daily practices of local
+Muslims was eye-opening. I don’t personally practise any religion, but I
+have at least some understanding of Christian religious practice through
+participating in English culture and tradition, but the practice of
+Islam was a relative unknown to me. Seeing rituals like ablution (wudu)
+performed brought these to life in a way that simply reading about them
+can’t.
+
+Muslims and Islam are, sadly, often the subject of misunderstanding,
+suspicion, and even outright hostility in many Western societies, so I
+thought this was a great experience offered to visitors of the masjid.
+Of course, in an ideal world, mosques shouldn’t need to raise awareness
+and help alleviate social tensions, but one step at a time I guess.

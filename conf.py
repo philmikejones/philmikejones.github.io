@@ -37,7 +37,7 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
-    '_build', 'docs',
+    '_build', 'docs', "blog",
     'content',
     'venv', 'Thumbs.db', '.DS_Store', '.gitignore', '.gitmodules'
 ]
