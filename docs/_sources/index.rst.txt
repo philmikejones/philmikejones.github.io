@@ -44,7 +44,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst
    tutorials/2014-11-21-obtaining-date-webpage.rst
    tutorials/2018-09-04-commissioning-research.rst
-
+   tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
 
 .. * :ref:`genindex`
 .. * :ref:`modindex`

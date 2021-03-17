@@ -39,6 +39,7 @@ knit:
 	pandoc tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.md -o tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst
 	pandoc tutorials/2014-11-21-obtaining-date-webpage.md -o tutorials/2014-11-21-obtaining-date-webpage.rst
 	pandoc tutorials/2014-07-14-installing-rgdal-in-r-on-linux.md -o tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst
+	pandoc tutorials/2014-05-16-qgis-thematic-mapping-open-source.md -o tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
 
 .PHONY: help Makefile knit
 
