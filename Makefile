@@ -34,6 +34,7 @@ knit:
 	pandoc tutorials/2015-06-29-list-nomisweb-datasets-json.md -o tutorials/2015-06-29-list-nomisweb-datasets-json.rst
 	pandoc tutorials/2015-05-20-set-root-directory-knitr.md -o tutorials/2015-05-20-set-root-directory-knitr.rst
 	pandoc tutorials/2015-03-13-embed-google-map.md -o tutorials/2015-03-13-embed-google-map.rst
+	pandoc tutorials/2015-02-27-glossary-acronyms-latex.md -o tutorials/2015-02-27-glossary-acronyms-latex.rst
 
 .PHONY: help Makefile knit
 
