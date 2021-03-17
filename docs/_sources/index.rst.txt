@@ -37,6 +37,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2016-07-14-creating-a-globe-in-qgis.rst
    tutorials/2015-01-27-build-large-maps-with-openstreetmap.rst
    tutorials/2015-03-13-embed-google-map.rst
+   tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
    tutorials/2015-07-17-configure-ssh-server-encrypted-home-directory.rst
    tutorials/2020-01-07-install-zotero-ubuntu.rst
    tutorials/2016-07-21-install-ubuntu-xenial-on-macbook-air.rst
@@ -44,7 +45,7 @@ Always be careful copying and pasting code from an internet source before runnin
    tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst
    tutorials/2014-11-21-obtaining-date-webpage.rst
    tutorials/2018-09-04-commissioning-research.rst
-   tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
+   tutorials/2010-08-11-telephone-interviewing.rst
 
 .. * :ref:`genindex`
 .. * :ref:`modindex`

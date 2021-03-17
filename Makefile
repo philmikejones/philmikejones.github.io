@@ -40,6 +40,8 @@ knit:
 	pandoc tutorials/2014-11-21-obtaining-date-webpage.md -o tutorials/2014-11-21-obtaining-date-webpage.rst
 	pandoc tutorials/2014-07-14-installing-rgdal-in-r-on-linux.md -o tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst
 	pandoc tutorials/2014-05-16-qgis-thematic-mapping-open-source.md -o tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
+	pandoc tutorials/2010-08-11-telephone-interviewing.md -o tutorials/2010-08-11-telephone-interviewing.rst
+	
 
 .PHONY: help Makefile knit
 
