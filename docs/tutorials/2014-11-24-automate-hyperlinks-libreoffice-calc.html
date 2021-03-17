@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Install sf package in Ubuntu &mdash; philmikejones  documentation</title>
+  <title>Sources: &mdash; philmikejones  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Spatial packages and Travis" href="2017-05-12-spatial-packages-and-travis.html" />
-    <link rel="prev" title="Set root directory for knitr" href="2015-05-20-set-root-directory-knitr.html" /> 
+    <link rel="next" title="Advice for commissioning research" href="2018-09-04-commissioning-research.html" />
+    <link rel="prev" title="Glossary and acronyms in LaTeX" href="2015-02-27-glossary-acronyms-latex.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2017-05-30-geocoding-googleway.html">Geocoding with Googleway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2015-06-29-list-nomisweb-datasets-json.html">List Nomisweb Datasets with JSON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2015-05-20-set-root-directory-knitr.html">Set root directory for knitr</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Install sf package in Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2018-08-29-install-sf-ubuntu.html">Install sf package in Ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2017-05-12-spatial-packages-and-travis.html">Spatial packages and Travis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2019-01-03-install-qgis-ubuntu.html">Install QGIS in Ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2016-07-14-creating-a-globe-in-qgis.html">Create a globe in QGIS</a></li>
@@ -106,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2020-01-07-install-zotero-ubuntu.html">Install Zotero on Ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2016-07-21-install-ubuntu-xenial-on-macbook-air.html">Install Ubuntu on Macbook Air</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2015-02-27-glossary-acronyms-latex.html">Glossary and acronyms in LaTeX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2014-11-24-automate-hyperlinks-libreoffice-calc.html">Sources:</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sources:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2018-09-04-commissioning-research.html">Advice for commissioning research</a></li>
 </ul>
 
@@ -156,13 +156,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Install sf package in Ubuntu</li>
+      <li>Sources:</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/tutorials/2018-08-29-install-sf-ubuntu.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/2014-11-24-automate-hyperlinks-libreoffice-calc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,81 +175,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install-sf-package-in-ubuntu">
-<h1>Install sf package in Ubuntu<a class="headerlink" href="#install-sf-package-in-ubuntu" title="Permalink to this headline">¶</a></h1>
-<p>If you receive errors about <code class="docutils literal notranslate"><span class="pre">udunits2</span></code> or <code class="docutils literal notranslate"><span class="pre">gdal-config</span></code> when
-installing <code class="docutils literal notranslate"><span class="pre">sf</span></code> in Ubuntu, this tutorial shows you how to fix them.</p>
-<div class="section" id="udunits2">
-<h2><code class="docutils literal notranslate"><span class="pre">udunits2</span></code><a class="headerlink" href="#udunits2" title="Permalink to this headline">¶</a></h2>
-<p>Here’s the <code class="docutils literal notranslate"><span class="pre">udunits2</span></code> error:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>checking udunits2.h usability... no
-checking udunits2.h presence... no
-checking for udunits2.h... no
-checking udunits2/udunits2.h usability... no
-checking udunits2/udunits2.h presence... no
-checking for udunits2/udunits2.h... no
-checking for ut_read_xml in -ludunits2... no
-configure: error: in `/tmp/RtmpLjOYHU/R.INSTALL9fb6a264546/units&#39;:
-configure: error:
---------------------------------------------------------------------------------
-  libudunits2.so not found!
-
-  If the udunits2 library is installed in a non-standard location, use:
-
-    --configure-args=&#39;--with-udunits2-lib=/usr/local/lib&#39;
-
-  for example, if the library was not found, and/or
-
-    --configure-args=&#39;--with-udunits2-include=/usr/include/udunits2&#39;
-
-  if the header was not found, replacing paths with appropriate values for your
-  installation. You can alternatively use the UDUNITS2_INCLUDE and UDUNITS2_LIBS
-  environment variables.
-
-  If udunits2 is not installed, please install it.
-  It is required for this package.
---------------------------------------------------------------------------------
-
-See `config.log&#39; for more details
-ERROR: configuration failed for package ‘units’
-* removing ‘/home/lw1pj/R/x86_64-pc-linux-gnu-library/3.5/units’
-Warning in install.packages :
-  installation of package ‘units’ had non-zero exit status
-ERROR: dependency ‘units’ is not available for package ‘sf’
-* removing ‘/home/lw1pj/R/x86_64-pc-linux-gnu-library/3.5/sf’
-Warning in install.packages :
-  installation of package ‘sf’ had non-zero exit status
-
-The downloaded source packages are in
-    ‘/tmp/RtmptQoX2j/downloaded_packages’
-</pre></div>
-</div>
-<p>To fix this, install <code class="docutils literal notranslate"><span class="pre">libudunits2-0</span></code> and <code class="docutils literal notranslate"><span class="pre">libudunits2-dev</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install -y libudunits2-0 libudunits2-dev
-</pre></div>
-</div>
-<p>Enter your sudo password when prompted.</p>
-</div>
-<div class="section" id="gdal-config">
-<h2><code class="docutils literal notranslate"><span class="pre">gdal-config</span></code><a class="headerlink" href="#gdal-config" title="Permalink to this headline">¶</a></h2>
-<p>And the <code class="docutils literal notranslate"><span class="pre">gdal-config</span></code> error:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>checking for gdal-config... no
-no
-configure: error: gdal-config not found or not executable.
-ERROR: configuration failed for package ‘sf’
-* removing ‘/home/lw1pj/R/x86_64-pc-linux-gnu-library/3.5/sf’
-Warning in install.packages :
-  installation of package ‘sf’ had non-zero exit status
-
-The downloaded source packages are in
-    ‘/tmp/RtmptQoX2j/downloaded_packages’
-</pre></div>
-</div>
-<p>To fix this you need to install <code class="docutils literal notranslate"><span class="pre">libgdal-dev</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgdal-dev
-</pre></div>
-</div>
-</div>
+  <p>title: Automate Hyperlinks in LibreOffice Calc date: 2014-11-24</p>
+<p>categories: - Code</p>
+<p>I’m in the middle of obtaining articles I’ve identified as part of
+literature review search. I have a large LibreOffice Calc table with
+bibliographic details of all the articles I’ve considered (plus a marker
+for whether I have excluded the article manually or not).</p>
+<p>Having to copy and paste article titles or DOIs into Google is a bit of
+a chore, if I’m honest, as there are nearly 100 of them, so to automate
+the Google search somewhat I carried out the following steps:</p>
+<ol class="arabic simple">
+<li><p>Copy the column of the information you’re going to search on. For
+example, I know I have the title for each article so I’ve taken a
+copy of the title column to edit.</p></li>
+<li><p>Format the copied titles into an appropriate format to pass to
+google. This includes removing any line breaks and spaces:</p>
+<ol class="arabic simple">
+<li><p>To remove link breaks, select the column and Find &amp; Replace (CTRL
++ H). Search for and replace with nothing (i.e. leave the replace
+field blank). Replace all.</p></li>
+<li><p>Google expects spaces linking words to be a + symbol. Again,
+select the entire column press CTRL + H and search for a space
+character (just hit spacebar once), and replace with +. Again,
+replace all.</p></li>
+</ol>
+</li>
+<li><p>To turn these formatted strings into Google hyperlinks to search,
+select the column againand press CTRL + H for another find and
+replace. Find .* and replace with
+=HYPERLINK(&amp;#8220https://www.google.co.uk/search?q=&amp;”)</p>
+<ol class="arabic simple">
+<li><p>This searches for, effectively, the entire content of each cell.
+This is then passed to the end of the replace string where the ‘&amp;’
+is.</p></li>
+<li><p>Each cell should now be a hyperlink that can simply be clicked,
+greatly reducing search time!</p></li>
+</ol>
+</li>
+</ol>
+<div class="section" id="sources">
+<h1>Sources:<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.libreoffice.org/Common/List_of_Regular_Expressions">List of regular
+expressions</a></p></li>
+<li><p><a class="reference external" href="http://ask.libreoffice.o../_static/question/19726/calc-make-rows-of-text-into-google-search-hyperlinks/">http://ask.libreoffice.o../_static/question/19726/calc-make-rows-of-text-into-google-search-hyperlinks/</a></p></li>
+</ul>
 </div>
 
 
