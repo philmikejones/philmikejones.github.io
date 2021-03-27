@@ -61,21 +61,10 @@ Vector Layer’ icon (bottom left of this screenshot, looks like a ‘V’):
 
    <figure id="attachment_1094" class="thumbnail wp-caption aligncenter" style="width: 167px">
 
-` <https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/vector-layor.png>`__
+.. figure:: ../_static/img/add-vector-layer.png
+   :alt: Add vector layer
 
-.. raw:: html
-
-   <figcaption class="caption wp-caption-text">
-
-QGIS: Add Vector Layer (bottom left icon)
-
-.. raw:: html
-
-   </figcaption>
-
-.. raw:: html
-
-   </figure>
+   Add vector layer
 
 Add Data
 --------

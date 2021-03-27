@@ -34,7 +34,8 @@ This is easily achieved in QGIS.
 
 I use shapefiles as these appear to be the _de facto_ standard among GIS applications. Load a shapefile with SHIFT+CTRL+V or by clicking the &#8216;Add Vector Layer' icon (bottom left of this screenshot, looks like a &#8216;V'):<figure id="attachment_1094" class="thumbnail wp-caption aligncenter" style="width: 167px">
 
-[<img class="size-full wp-image-1094" src="https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/vector-layor.png?fit=157%2C128" alt="QGIS: Add Vector Layer" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/vector-layor.png)<figcaption class="caption wp-caption-text">QGIS: Add Vector Layer (bottom left icon)</figcaption></figure> 
+![Add vector layer](../_static/img/add-vector-layer.png)
+
 
 ## Add Data
 
