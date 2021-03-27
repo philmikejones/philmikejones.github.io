@@ -41,8 +41,8 @@ knit:
 	pandoc tutorials/2014-07-14-installing-rgdal-in-r-on-linux.md -o tutorials/2014-07-14-installing-rgdal-in-r-on-linux.rst
 	pandoc tutorials/2014-05-16-qgis-thematic-mapping-open-source.md -o tutorials/2014-05-16-qgis-thematic-mapping-open-source.rst
 	pandoc tutorials/2010-08-11-telephone-interviewing.md -o tutorials/2010-08-11-telephone-interviewing.rst
-	Rscript -e 'knitr::knit("blog/2018-09-22-trigpoints-data-set-released.Rmd", "blog/2018-09-22-trigpoints-data-set-released.md")'
-	Rscript -e 'knitr::knit("blog/2017-10-11-raker-v0-2-1-patched.Rmd", "blog/2017-10-11-raker-v0-2-1-patched.md")'
+	# Rscript -e 'knitr::knit("blog/2018-09-22-trigpoints-data-set-released.Rmd", "blog/2018-09-22-trigpoints-data-set-released.md")'
+	# Rscript -e 'knitr::knit("blog/2017-10-11-raker-v0-2-1-patched.Rmd", "blog/2017-10-11-raker-v0-2-1-patched.md")'
 	pandoc blog/2017-10-11-raker-v0-2-1-patched.md -o blog/2017-10-11-raker-v0-2-1-patched.rst
 	pandoc blog/2011-08-07-negotiating-careers-outside-academia.md -o blog/2011-08-07-negotiating-careers-outside-academia.rst
 	pandoc blog/2011-11-13-travelling-by-train-physical-disability.md -o blog/2011-11-13-travelling-by-train-physical-disability.rst
