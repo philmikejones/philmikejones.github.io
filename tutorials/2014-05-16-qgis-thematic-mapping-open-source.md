@@ -41,7 +41,7 @@ I use shapefiles as these appear to be the _de facto_ standard among GIS applica
 
 To add data about the geography you've loaded &#8211; and join it to the shapefile &#8211; click &#8216;Add Delimited Text Layer' (icon looks like a comma). I'm assuming here you're using a text delimited file (probably comma delimited, like .csv) because this is the most common format data is shared in, or at least can be easily converted to. Other data formats are supported, but for now lets load a .csv:<figure id="attachment_1095" class="thumbnail wp-caption aligncenter" style="width: 66px">
 
-[<img class="size-full wp-image-1095" src="https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/add-csv-layer.png?fit=56%2C40" alt="QGIS: Add csv layer" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/add-csv-layer.png)<figcaption class="caption wp-caption-text">QGIS: Add CSV Layer</figcaption></figure> 
+![Add delimited text (csv) layer](../_static/img/add-csv-layer.png) 
 
 You should get the following dialogue box:<figure id="attachment_1096" class="thumbnail wp-caption aligncenter" style="width: 310px">
 

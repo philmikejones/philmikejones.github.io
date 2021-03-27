@@ -80,21 +80,10 @@ are supported, but for now lets load a .csv:
 
    <figure id="attachment_1095" class="thumbnail wp-caption aligncenter" style="width: 66px">
 
-` <https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/add-csv-layer.png>`__
+.. figure:: ../_static/img/add-csv-layer.png
+   :alt: Add delimited text (csv) layer
 
-.. raw:: html
-
-   <figcaption class="caption wp-caption-text">
-
-QGIS: Add CSV Layer
-
-.. raw:: html
-
-   </figcaption>
-
-.. raw:: html
-
-   </figure>
+   Add delimited text (csv) layer
 
 You should get the following dialogue box:
 
