@@ -57,10 +57,6 @@ I use shapefiles as these appear to be the *de facto* standard among GIS
 applications. Load a shapefile with SHIFT+CTRL+V or by clicking the ‘Add
 Vector Layer’ icon (bottom left of this screenshot, looks like a ‘V’):
 
-.. raw:: html
-
-   <figure id="attachment_1094" class="thumbnail wp-caption aligncenter" style="width: 167px">
-
 .. figure:: ../_static/img/add-vector-layer.png
    :alt: Add vector layer
 
@@ -76,10 +72,6 @@ delimited, like .csv) because this is the most common format data is
 shared in, or at least can be easily converted to. Other data formats
 are supported, but for now lets load a .csv:
 
-.. raw:: html
-
-   <figure id="attachment_1095" class="thumbnail wp-caption aligncenter" style="width: 66px">
-
 .. figure:: ../_static/img/add-csv-layer.png
    :alt: Add delimited text (csv) layer
 
@@ -87,25 +79,10 @@ are supported, but for now lets load a .csv:
 
 You should get the following dialogue box:
 
-.. raw:: html
+.. figure:: ../_static/img/delimited-text-dialogue.png
+   :alt: Delimited text dialogue box
 
-   <figure id="attachment_1096" class="thumbnail wp-caption aligncenter" style="width: 310px">
-
-` <https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png>`__
-
-.. raw:: html
-
-   <figcaption class="caption wp-caption-text">
-
-QGIS: Load CSV File
-
-.. raw:: html
-
-   </figcaption>
-
-.. raw:: html
-
-   </figure>
+   Delimited text dialogue box
 
 The main thing to remember when loading a .csv file is to tell QGIS if
 your file contains geometry data or not. Most of the time when I
@@ -120,26 +97,6 @@ table)’ from the dialogue box.
 Once the data is loaded, it’s time to ‘join’ it to the shapefile or
 other layer we loaded earlier. Right-click on the layer and press
 ‘Properties’:
-
-.. raw:: html
-
-   <figure id="attachment_1097" class="thumbnail wp-caption aligncenter" style="width: 310px">
-
-` <https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png>`__
-
-.. raw:: html
-
-   <figcaption class="caption wp-caption-text">
-
-QGIS: Joining a csv file to a layer
-
-.. raw:: html
-
-   </figcaption>
-
-.. raw:: html
-
-   </figure>
 
 From there, select Joins, then the green plus:
 

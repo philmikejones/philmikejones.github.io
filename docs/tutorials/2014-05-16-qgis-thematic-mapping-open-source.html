@@ -232,7 +232,7 @@ both files.</p></li>
 <p>I use shapefiles as these appear to be the <em>de facto</em> standard among GIS
 applications. Load a shapefile with SHIFT+CTRL+V or by clicking the ‘Add
 Vector Layer’ icon (bottom left of this screenshot, looks like a ‘V’):</p>
-<figure id="attachment_1094" class="thumbnail wp-caption aligncenter" style="width: 167px"><div class="figure align-default" id="id1">
+<div class="figure align-default" id="id1">
 <img alt="Add vector layer" src="../_images/add-vector-layer.png" />
 <p class="caption"><span class="caption-text">Add vector layer</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
@@ -245,14 +245,16 @@ I’m assuming here you’re using a text delimited file (probably comma
 delimited, like .csv) because this is the most common format data is
 shared in, or at least can be easily converted to. Other data formats
 are supported, but for now lets load a .csv:</p>
-<figure id="attachment_1095" class="thumbnail wp-caption aligncenter" style="width: 66px"><div class="figure align-default" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="Add delimited text (csv) layer" src="../_images/add-csv-layer.png" />
 <p class="caption"><span class="caption-text">Add delimited text (csv) layer</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>You should get the following dialogue box:</p>
-<figure id="attachment_1096" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png">https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png</a>&gt;`__</p>
-<figcaption class="caption wp-caption-text"><p>QGIS: Load CSV File</p>
-</figcaption></figure><p>The main thing to remember when loading a .csv file is to tell QGIS if
+<div class="figure align-default" id="id3">
+<img alt="Delimited text dialogue box" src="../_images/delimited-text-dialogue.png" />
+<p class="caption"><span class="caption-text">Delimited text dialogue box</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The main thing to remember when loading a .csv file is to tell QGIS if
 your file contains geometry data or not. Most of the time when I
 download .csv files relating to a geography (like LSOA) it contains the
 LSOA code for referencing, but the file doesn’t include any geometry
@@ -264,9 +266,7 @@ table)’ from the dialogue box.</p>
 <p>Once the data is loaded, it’s time to ‘join’ it to the shapefile or
 other layer we loaded earlier. Right-click on the layer and press
 ‘Properties’:</p>
-<figure id="attachment_1097" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png">https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png</a>&gt;`__</p>
-<figcaption class="caption wp-caption-text"><p>QGIS: Joining a csv file to a layer</p>
-</figcaption></figure><p>From there, select Joins, then the green plus:</p>
+<p>From there, select Joins, then the green plus:</p>
 <figure id="attachment_1098" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png">https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png</a>&gt;`__</p>
 <figcaption class="caption wp-caption-text"><p>QGIS: Joins dialogue</p>
 </figcaption></figure><p>Select your csv file (‘Join layer’), the unique code you’re using to

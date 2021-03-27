@@ -32,28 +32,26 @@ This is easily achieved in QGIS.
 
 ## Load a Vector (Map) Layer
 
-I use shapefiles as these appear to be the _de facto_ standard among GIS applications. Load a shapefile with SHIFT+CTRL+V or by clicking the &#8216;Add Vector Layer' icon (bottom left of this screenshot, looks like a &#8216;V'):<figure id="attachment_1094" class="thumbnail wp-caption aligncenter" style="width: 167px">
+I use shapefiles as these appear to be the _de facto_ standard among GIS applications. Load a shapefile with SHIFT+CTRL+V or by clicking the &#8216;Add Vector Layer' icon (bottom left of this screenshot, looks like a &#8216;V'):
 
 ![Add vector layer](../_static/img/add-vector-layer.png)
 
 
 ## Add Data
 
-To add data about the geography you've loaded &#8211; and join it to the shapefile &#8211; click &#8216;Add Delimited Text Layer' (icon looks like a comma). I'm assuming here you're using a text delimited file (probably comma delimited, like .csv) because this is the most common format data is shared in, or at least can be easily converted to. Other data formats are supported, but for now lets load a .csv:<figure id="attachment_1095" class="thumbnail wp-caption aligncenter" style="width: 66px">
+To add data about the geography you've loaded &#8211; and join it to the shapefile &#8211; click &#8216;Add Delimited Text Layer' (icon looks like a comma). I'm assuming here you're using a text delimited file (probably comma delimited, like .csv) because this is the most common format data is shared in, or at least can be easily converted to. Other data formats are supported, but for now lets load a .csv:
 
 ![Add delimited text (csv) layer](../_static/img/add-csv-layer.png) 
 
-You should get the following dialogue box:<figure id="attachment_1096" class="thumbnail wp-caption aligncenter" style="width: 310px">
+You should get the following dialogue box:
 
-[<img class="size-medium wp-image-1096" src="https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue-300x194.png?fit=300%2C193" alt="Load CSV file" srcset="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png?w=784 784w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png?resize=300%2C194 300w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png?resize=768%2C496 768w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png?resize=660%2C426 660w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/csv-dialogue.png)<figcaption class="caption wp-caption-text">QGIS: Load CSV File</figcaption></figure> 
+![Delimited text dialogue box](../_static/img/delimited-text-dialogue.png)
 
 The main thing to remember when loading a .csv file is to tell QGIS if your file contains geometry data or not. Most of the time when I download .csv files relating to a geography (like LSOA) it contains the LSOA code for referencing, but the file doesn't include any geometry data per se. I would therefore select &#8216;No geometry (attribute only table)' from the dialogue box.
 
 ## &#8216;Joining' the Two
 
-Once the data is loaded, it's time to &#8216;join' it to the shapefile or other layer we loaded earlier. Right-click on the layer and press &#8216;Properties':<figure id="attachment_1097" class="thumbnail wp-caption aligncenter" style="width: 310px">
-
-[<img class="size-medium wp-image-1097" src="https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-300x189.png?fit=300%2C188" alt="Performing a join in QGIS" srcset="https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?w=1631 1631w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?resize=300%2C189 300w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?resize=768%2C483 768w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?resize=1024%2C644 1024w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?resize=660%2C415 660w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png?w=1296 1296w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join.png)<figcaption class="caption wp-caption-text">QGIS: Joining a csv file to a layer</figcaption></figure> 
+Once the data is loaded, it's time to &#8216;join' it to the shapefile or other layer we loaded earlier. Right-click on the layer and press &#8216;Properties':
 
 From there, select Joins, then the green plus:<figure id="attachment_1098" class="thumbnail wp-caption aligncenter" style="width: 310px">
 
