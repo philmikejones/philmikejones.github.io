@@ -10,10 +10,10 @@ Phil Mike Jones
 I'm a geographer.
 I use R, Python, and Linux to analyse spatial and non-spatial data sets.
 
-.. figure:: _static/img/coffee.jpg
-   :alt: Coffee
+.. figure:: _static/img/crimes-voronoi.png
+   :alt: Voronoi polygons of crime locations
 
-   Coffee
+   Voronoi polygons of crimes - data from data.police.uk
 
 
 I've written a number of tutorials on these topics that were originally to remind me how to do things, but which you're welcome to use if they're any help to you.
