@@ -16,7 +16,7 @@ I use R, Python, and Linux to analyse spatial and non-spatial data sets.
    Voronoi polygons of crimes - data from data.police.uk
 
 
-I've written a number of tutorials on these topics that were originally to remind me how to do things, but which you're welcome to use if they're any help to you.
+The tutorials I've written here on these topics were originally to remind me how to things, but which you're welcome to use if they're any help to you.
 You can use and share these tutorials for free (`CC BY-NC <https://creativecommons.org/licenses/by-nc/4.0/>`__).
 I try to ensure they're as accurate as possible and hope they're helpful, but make no guarantees that they're correct; use at your own risk.
 Always be careful copying and pasting code from an internet source before running it on your machine.
