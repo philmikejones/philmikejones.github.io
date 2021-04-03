@@ -2,17 +2,16 @@
 About me
 ########
 
-I'm a lecturer at the University of Derby, where I teach social science research methods.
+I'm a `lecturer at the University of Derby <https://www.derby.ac.uk/staff/phil-jones/>`__, where I teach social science research methods.
 I specialise in quantitative and spatial analysis.
 Previously I worked on the “`Long-term impacts of ‘Thatcherism’: crime, politics and inequality <https://www.derby.ac.uk/research/showcase/thatcherism-and-crime/>`__” project.
 
 I have a PhD in human geography.
 You can `read the manuscript <http://etheses.whiterose.ac.uk/id/eprint/19283>`__ or `view the source code <https://github.com/philmikejones/thesis>`__.
 
-I write R and Python code to analyse spatial and non–spatial data sets.
+I write R and Python code to analyse spatial and non-spatial data sets.
 You can see some of my `code projects <https://github.com/philmikejones>`__ on GitHub.
-I’ve written several `tutorials <tutorials/>`__  on R, Python, GIS, and Linux.
-My `stats101 <https://philmikejones.github.io/stats101/>`__ website might also be useful if you want an introduction to statistics (written with Python).
+As well as the tutorials here my `stats101 <https://philmikejones.github.io/stats101/>`__ website might also be useful if you want an introduction to statistics (written with Python).
 
 I write code to analyse spatial and non–spatial data sets.
 I am the author of `rakeR <https://cran.r-project.org/package=rakeR>`_, an ``R`` package for simulating spatial data.
