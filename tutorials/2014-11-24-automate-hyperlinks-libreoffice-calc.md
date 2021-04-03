@@ -1,12 +1,9 @@
+# Automate Hyperlinks in LibreOffice Calc
 
-title: Automate Hyperlinks in LibreOffice Calc
 date: 2014-11-24
 
-categories:
-  - Code
-
-
-I'm in the middle of obtaining articles I've identified as part of literature review search. I have a large LibreOffice Calc table with bibliographic details of all the articles I've considered (plus a marker for whether I have excluded the article manually or not).
+I'm in the middle of obtaining articles I've identified as part of literature review search.
+I have a large LibreOffice Calc table with bibliographic details of all the articles I've considered (plus a marker for whether I have excluded the article manually or not).
 
 Having to copy and paste article titles or DOIs into Google is a bit of a chore, if I'm honest, as there are nearly 100 of them, so to automate the Google search somewhat I carried out the following steps:
 

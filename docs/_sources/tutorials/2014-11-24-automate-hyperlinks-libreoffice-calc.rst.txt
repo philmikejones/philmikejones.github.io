@@ -1,6 +1,7 @@
-title: Automate Hyperlinks in LibreOffice Calc date: 2014-11-24
+Automate Hyperlinks in LibreOffice Calc
+=======================================
 
-categories: - Code
+date: 2014-11-24
 
 I’m in the middle of obtaining articles I’ve identified as part of
 literature review search. I have a large LibreOffice Calc table with
