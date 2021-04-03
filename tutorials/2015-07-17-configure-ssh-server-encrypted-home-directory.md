@@ -3,7 +3,6 @@
 
 date: 2015-07-17
 
-
 The following instructions are to set up an ssh server on Ubuntu linux with an encrypted home directory.
 
 Throughout `<username>` refers to an actual username like `phil`.
@@ -27,19 +26,19 @@ sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
 sudo gedit /etc/ssh/sshd_config
 ```
 
-Change the line `#PasswordAuthentication yes` to read `PasswordAuthentication yes` (i.e. remove the #) and only allow certain users:
+Change the line `#PasswordAuthentication yes` to read `PasswordAuthentication yes` (i.e. remove the `#`) and only allow certain users:
 
 ```bash
 PasswordAuthentication yes
 AllowUsers <username>
 ```
 
-Finally tell the configuration file to look in `/etc/ssh/username/authorized_keys` for client keys.
+Finally tell the configuration file to look in `/etc/ssh/<username>/authorized_keys` for client keys.
 The default is to look in `~/.ssh/` which is no good because this is encrypted until you've logged in!
 Change `AuthorizedKeysFile` to:
 
 ```bash
-AuthorizedKeysFile    /etc/s../_static/authorized_keys
+AuthorizedKeysFile    /etc/ssh/<username>/authorized_keys
 ```
 
 Close `gedit`.
@@ -71,13 +70,13 @@ nano ~/.ssh/id_rsa.pub
 Copy the key to the clipboard then:
 
 ```bash
-ssh username.host.tld
+ssh username@host
 ```
 
 Enter log in password when prompted, then:
 
 ```bash
-nano /etc/ssh/username/authorized_keys  # Paste the key here and save
+nano /etc/ssh/<username>/authorized_keys  # Paste the key here and save
 ```
 
 Then logout:

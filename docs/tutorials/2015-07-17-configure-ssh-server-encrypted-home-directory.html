@@ -199,17 +199,17 @@ sudo gedit /etc/ssh/sshd_config
 </pre></div>
 </div>
 <p>Change the line <code class="docutils literal notranslate"><span class="pre">#PasswordAuthentication</span> <span class="pre">yes</span></code> to read
-<code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> (i.e. remove the #) and only allow
+<code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> (i.e. remove the <code class="docutils literal notranslate"><span class="pre">#</span></code>) and only allow
 certain users:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PasswordAuthentication yes
 AllowUsers &lt;username&gt;
 </pre></div>
 </div>
 <p>Finally tell the configuration file to look in
-<code class="docutils literal notranslate"><span class="pre">/etc/ssh/username/authorized_keys</span></code> for client keys. The default is to
-look in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code> which is no good because this is encrypted until
+<code class="docutils literal notranslate"><span class="pre">/etc/ssh/&lt;username&gt;/authorized_keys</span></code> for client keys. The default is
+to look in <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code> which is no good because this is encrypted until
 you’ve logged in! Change <code class="docutils literal notranslate"><span class="pre">AuthorizedKeysFile</span></code> to:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>AuthorizedKeysFile    /etc/s../_static/authorized_keys
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>AuthorizedKeysFile    /etc/ssh/&lt;username&gt;/authorized_keys
 </pre></div>
 </div>
 <p>Close <code class="docutils literal notranslate"><span class="pre">gedit</span></code>. Restart the ssh server with:</p>
@@ -233,11 +233,11 @@ password logins earlier) and do it from there. So from the client:</p>
 </pre></div>
 </div>
 <p>Copy the key to the clipboard then:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh username.host.tld
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh username@host
 </pre></div>
 </div>
 <p>Enter log in password when prompted, then:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano /etc/ssh/username/authorized_keys  <span class="c1"># Paste the key here and save</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano /etc/ssh/&lt;username&gt;/authorized_keys  <span class="c1"># Paste the key here and save</span>
 </pre></div>
 </div>
 <p>Then logout:</p>

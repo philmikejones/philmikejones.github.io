@@ -28,7 +28,7 @@ Configure ``sshd_config`` to initially accept password logins:
    sudo gedit /etc/ssh/sshd_config
 
 Change the line ``#PasswordAuthentication yes`` to read
-``PasswordAuthentication yes`` (i.e. remove the #) and only allow
+``PasswordAuthentication yes`` (i.e. remove the ``#``) and only allow
 certain users:
 
 .. code:: bash
@@ -37,13 +37,13 @@ certain users:
    AllowUsers <username>
 
 Finally tell the configuration file to look in
-``/etc/ssh/username/authorized_keys`` for client keys. The default is to
-look in ``~/.ssh/`` which is no good because this is encrypted until
+``/etc/ssh/<username>/authorized_keys`` for client keys. The default is
+to look in ``~/.ssh/`` which is no good because this is encrypted until
 you’ve logged in! Change ``AuthorizedKeysFile`` to:
 
 .. code:: bash
 
-   AuthorizedKeysFile    /etc/s../_static/authorized_keys
+   AuthorizedKeysFile    /etc/ssh/<username>/authorized_keys
 
 Close ``gedit``. Restart the ssh server with:
 
@@ -75,13 +75,13 @@ Copy the key to the clipboard then:
 
 .. code:: bash
 
-   ssh username.host.tld
+   ssh username@host
 
 Enter log in password when prompted, then:
 
 .. code:: bash
 
-   nano /etc/ssh/username/authorized_keys  # Paste the key here and save
+   nano /etc/ssh/<username>/authorized_keys  # Paste the key here and save
 
 Then logout:
 
