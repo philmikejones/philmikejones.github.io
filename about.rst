@@ -10,12 +10,10 @@ I have a PhD in human geography.
 You can `read the manuscript <http://etheses.whiterose.ac.uk/id/eprint/19283>`__ or `view the source code <https://github.com/philmikejones/thesis>`__.
 
 I write R and Python code to analyse spatial and non-spatial data sets.
-You can see some of my `code projects <https://github.com/philmikejones>`__ on GitHub.
-As well as the tutorials here my `stats101 <https://philmikejones.github.io/stats101/>`__ website might also be useful if you want an introduction to statistics (written with Python).
-
-I write code to analyse spatial and non–spatial data sets.
 I am the author of `rakeR <https://cran.r-project.org/package=rakeR>`_, an ``R`` package for simulating spatial data.
-You can see some of my other `code projects <https://github.com/philmikejones>`_ on GitHub.
+You can see some of my other `code projects <https://github.com/philmikejones>`__ on GitHub.
+
+As well as the tutorials here my `stats101 <https://philmikejones.github.io/stats101/>`__ website might also be useful if you want an introduction to statistics (written with Python).
 
 
 *********
@@ -27,7 +25,9 @@ My thesis is, 'A Spatial Microsimulation Analysis of Health Inequalities and Hea
 You can `read the manuscript <http://etheses.whiterose.ac.uk/id/eprint/19283>`_ or `view the source code <https://github.com/philmikejones/thesis>`_.
 I was supervised by Professors `Dimitris Ballas <https://www.rug.nl/staff/d.ballas/cv?lang=en>`_ and `Liddy Goyder <https://www.sheffield.ac.uk/scharr/sections/ph/staff/profiles/liddy>`_, with support from `Doncaster Metropolitan Borough Council <http://www.doncaster.gov.uk/>`_, especially Laurie Mott.
 
-I have an MA with distinction in social research from the University of York (2010), and a BA (Hons) in Sociology from the University of York (2005).
+- PhD in human geography from the University of Sheffield (2017)
+- MA with distinction in social research from the University of York (2010)
+- BA (Hons) in Sociology from the University of York (2005)
 
 
 ************
