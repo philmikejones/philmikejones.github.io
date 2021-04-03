@@ -3,7 +3,7 @@ Install QGIS in Ubuntu
 
 2019-01-03
 
-Instructions to install QGIS 3 in Ubuntu Bionic Beaver 19.04 LTS, as of
+Instructions to install QGIS 3 in Ubuntu Bionic Beaver 18.04 LTS, as of
 January 2019.
 
 The instructions on the QGIS website to install QGIS on Ubuntu are a
@@ -90,8 +90,8 @@ following three lines to the bottom of this file:
 ::
 
    # QGIS Ubuntugis-unstable dependencies
-   deb https://qgis.org/ubuntugis bionic main
-   deb-src https://qgis.org/ubuntugis bionic main
+   deb https://qgis.org/ubuntugis-ltr bionic main
+   deb-src https://qgis.org/ubuntugis-ltr bionic main
 
 Then save (CTRL + s) then exit.
 
@@ -112,39 +112,6 @@ these can be installed as necessary.
 Notes on QGIS version
 ---------------------
 
-I would normally recommend the most recent LTR version of QGIS for most
+I recommend installing the most recent LTR version of QGIS for most
 purposes. This is supported for longer so is the better choice for most
 environments.
-
-However, QGIS is transitioning from QGIS 2 to QGIS 3 and this is a big
-change in the underlying structure and operation of the software.
-Consequently I now recommend QGIS 3 as the default version, especially
-for beginners. As of January 2019 this is version 3.4 which is set to be
-the next LTR version.
-
-To install this version rather than the current LTR (still v2.x) we have
-used the latest software repositories. To continue using an LTR version
-when v3.4 finally replaces v2.x in the next few months you will need to
-replace the following sources in ``/etc/apt/sources.list``:
-
-::
-
-   # QGIS Ubuntugis-unstable dependencies
-   deb https://qgis.org/ubuntugis bionic main
-   deb-src https://qgis.org/ubuntugis bionic main
-
-with:
-
-::
-
-   # QGIS Ubuntugis-unstable dependencies
-   deb https://qgis.org/ubuntugis-ltr bionic main
-   deb-src https://qgis.org/ubuntugis-ltr bionic main
-
-Don’t forget to then run ``sudo apt update``. Of course, if you’re happy
-with the latest version you don’t need to do anything.
-
-I’ll update this blog post when this happens, but when you run your
-usual ``sudo apt upgrade`` or update through the Software Updater you’ll
-be prompted to accept a newer version of QGIS (probably 3.6) which is
-when you’ll know it’s time to change.
