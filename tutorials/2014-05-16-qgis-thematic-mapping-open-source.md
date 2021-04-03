@@ -3,21 +3,17 @@
 
 date: 2014-05-16
 
-QGIS is a mature open source GIS package that I have been using to produce high quality thematic maps for my PhD. It is similar to proprietary packages like ArcMap but is, in my opinion, superior for the following reasons:
+QGIS is a mature open source GIS package that I have been using to produce high quality thematic maps for my PhD.
+It is similar to proprietary packages like ArcMap but is, in my opinion, superior for the following reasons:
 
-- I've found QGIS less prone to crashes, particularly when handling large files (> ~100MB).
-- I think the QGIS interface makes it easier to understand what layers you're currently working with and have available.
-- Most importantly, QGIS is freely available and has no cost to download, making it possible for any individual to easily open, replicate and check your analysis.
+- I've found QGIS less prone to crashes, particularly when handling large files (> ~100MB)
+- I think the QGIS interface makes it easier to understand what layers you're currently working with and have available
+- Most importantly, QGIS is freely available and has no cost to download, making it possible for any individual to easily open, replicate and check your analysis
 
 ## Obtaining QGIS
 
-QGIS is available from <http://www.qgis.org/en/site/forusers/download.html>
-
-Windows users need to download just one .exe file. Ubuntu users can install with their package manager by following the instructions here: <http://www.qgis.org/en/site/forusers/alldownloads.html#ubuntu> (other distributions have similar instructions). Mac OS X users have the hardest time. If you're looking to install on Mac you need to download and install the following packages, in order, from <http://www.kyngchaos.com/software/qgis>:
-
-  1. [GDAL complete](http://www.kyngchaos.com/software/frameworks#gdal_complete)
-  2. [Matplotlib](http://www.kyngchaos.com/software/python)
-  3. Finally, [QGIS itself](http://www.kyngchaos.com/software/qgis).
+- QGIS is available from http://www.qgis.org/en/site/forusers/download.html
+- Installation instructions for Ubuntu: https://philmikejones.me/tutorials/2019-01-03-install-qgis-ubuntu.html
 
 ## Thematic Mapping with QGIS
 
@@ -71,8 +67,11 @@ The finished result should look something like this. If you want to reproduce th
 
 ## Sources
 
-The csv data is based on my analysis of the 2011 Census. The boundary data was obtained from the UK Data Service:
+The csv data is based on my analysis of the 2011 Census.
+The boundary data was obtained from the UK Data Service:
 
-Office for National Statistics, 2011 Census: Aggregate data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: <http://infuse.mimas.ac.uk>. This information is licensed under the terms of the Open Government Licence [http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2].
+Office for National Statistics, 2011 Census: Aggregate data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: <http://infuse.mimas.ac.uk>.
+This information is licensed under the terms of the Open Government Licence [http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2].
 
-Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: <http://edina.ac.uk/census>
+Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file].
+UK Data Service Census Support. Downloaded from: <http://edina.ac.uk/census>

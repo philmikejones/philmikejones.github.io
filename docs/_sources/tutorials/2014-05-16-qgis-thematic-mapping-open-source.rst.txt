@@ -9,31 +9,20 @@ proprietary packages like ArcMap but is, in my opinion, superior for the
 following reasons:
 
 -  I’ve found QGIS less prone to crashes, particularly when handling
-   large files (> ~100MB).
+   large files (> ~100MB)
 -  I think the QGIS interface makes it easier to understand what layers
-   you’re currently working with and have available.
+   you’re currently working with and have available
 -  Most importantly, QGIS is freely available and has no cost to
    download, making it possible for any individual to easily open,
-   replicate and check your analysis.
+   replicate and check your analysis
 
 Obtaining QGIS
 --------------
 
-QGIS is available from
-http://www.qgis.org/en/site/forusers/download.html
-
-Windows users need to download just one .exe file. Ubuntu users can
-install with their package manager by following the instructions here:
-http://www.qgis.org/en/site/forusers/alldownloads.html#ubuntu (other
-distributions have similar instructions). Mac OS X users have the
-hardest time. If you’re looking to install on Mac you need to download
-and install the following packages, in order, from
-http://www.kyngchaos.com/software/qgis:
-
-1. `GDAL
-   complete <http://www.kyngchaos.com/software/frameworks#gdal_complete>`__
-2. `Matplotlib <http://www.kyngchaos.com/software/python>`__
-3. Finally, `QGIS itself <http://www.kyngchaos.com/software/qgis>`__.
+-  QGIS is available from
+   http://www.qgis.org/en/site/forusers/download.html
+-  Installation instructions for Ubuntu:
+   https://philmikejones.me/tutorials/2019-01-03-install-qgis-ubuntu.html
 
 Thematic Mapping with QGIS
 --------------------------
