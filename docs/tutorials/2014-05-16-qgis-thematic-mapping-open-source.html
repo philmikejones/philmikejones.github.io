@@ -216,7 +216,15 @@ following steps:</p>
 both files.</p></li>
 <li><p>Set the shading of the map based on the joined dataset.</p></li>
 </ul>
-<p>This is easily achieved in QGIS.</p>
+<p>This is easily achieved in QGIS. I’m using 2018 mid-year population
+estimates for English local authority districts and London boroughs
+(LADs) as an example. You can download the data and map and follow along
+from these sources (you’ll need to extract the shapefile before you can
+use it):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip">https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip</a></p></li>
+<li><p><a class="reference external" href="http://www.nomisweb.co.uk/api/v01/dataset/NM_31_1.data.csv?geography=1811939329">http://www.nomisweb.co.uk/api/v01/dataset/NM_31_1.data.csv?geography=1811939329</a>…1811939332,1811939334…1811939336,1811939338…1811939497,1811939499…1811939501,1811939503,1811939505…1811939507,1811939509…1811939517,1811939519,1811939520,1811939524…1811939570,1811939575…1811939599,1811939601…1811939628,1811939630…1811939634,1811939636…1811939647,1811939649,1811939655…1811939664,1811939667&amp;date=latest&amp;sex=7&amp;age=0&amp;measures=20100&amp;select=geography_name,geography_code,obs_value</p></li>
+</ul>
 </div>
 <div class="section" id="load-a-vector-map-layer">
 <h2>Load a Vector (Map) Layer<a class="headerlink" href="#load-a-vector-map-layer" title="Permalink to this headline">¶</a></h2>
@@ -227,73 +235,68 @@ Vector Layer’ icon (bottom left of this screenshot, looks like a ‘V’):</p>
 <img alt="Add vector layer" src="../_images/add-vector-layer.png" />
 <p class="caption"><span class="caption-text">Add vector layer</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">england_lad_2011.shp</span></code> layer, leave the defaults, and press
+Add. If QGIS asks about using a fallback transformation use this; the
+difference in accuracy is 2m rather than 1m (so negligible for our
+purposes).</p>
 </div>
 <div class="section" id="add-data">
 <h2>Add Data<a class="headerlink" href="#add-data" title="Permalink to this headline">¶</a></h2>
-<p>To add data about the geography you’ve loaded – and join it to the
-shapefile – click ‘Add Delimited Text Layer’ (icon looks like a comma).
-I’m assuming here you’re using a text delimited file (probably comma
-delimited, like .csv) because this is the most common format data is
-shared in, or at least can be easily converted to. Other data formats
-are supported, but for now lets load a .csv:</p>
+<p>To add data about the geography you’ve loaded and join it to the
+shapefile click ‘Add Delimited Text Layer’ (icon looks like a comma).</p>
 <div class="figure align-default" id="id2">
 <img alt="Add delimited text (csv) layer" src="../_images/add-csv-layer.png" />
 <p class="caption"><span class="caption-text">Add delimited text (csv) layer</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-<p>You should get the following dialogue box:</p>
+<p>Here we’re using a text delimited file (comma delimited, or <code class="docutils literal notranslate"><span class="pre">.csv</span></code>)
+and this is a common format data is shared in (particularly for small
+amounts of data). You should get the following dialogue box:</p>
 <div class="figure align-default" id="id3">
 <img alt="Delimited text dialogue box" src="../_images/delimited-text-dialogue.png" />
 <p class="caption"><span class="caption-text">Delimited text dialogue box</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>The main thing to remember when loading a .csv file is to tell QGIS if
-your file contains geometry data or not. Most of the time when I
-download .csv files relating to a geography (like LSOA) it contains the
-LSOA code for referencing, but the file doesn’t include any geometry
-data per se. I would therefore select ‘No geometry (attribute only
-table)’ from the dialogue box.</p>
+your file contains geometry data or not. Here we’ve downloaded data that
+contains a geography code (a unique code for the LAD for joining
+purposes) but not actually geographical coordinates. Therefore make sure
+you select ‘No geometry (attribute only table)’ from the dialogue box.</p>
 </div>
 <div class="section" id="joining-the-two">
 <h2>‘Joining’ the Two<a class="headerlink" href="#joining-the-two" title="Permalink to this headline">¶</a></h2>
-<p>Once the data is loaded, it’s time to ‘join’ it to the shapefile or
-other layer we loaded earlier. Right-click on the layer and press
-‘Properties’:</p>
+<p>Once the data is loaded it’s time to ‘join’ it to the shapefile or other
+layer we loaded earlier. Right-click on the shapefile (geometry) layer
+and press ‘Properties’:</p>
 <p>From there, select Joins, then the green plus:</p>
-<figure id="attachment_1098" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png">https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png</a>&gt;`__</p>
-<figcaption class="caption wp-caption-text"><p>QGIS: Joins dialogue</p>
-</figcaption></figure><p>Select your csv file (‘Join layer’), the unique code you’re using to
-join, which is probably an LSOA code or similar (‘Join field’), and the
-target field in your vector layer. Like a key in a relational database,
-the codes for the join field and target layer must match exactly, or
-QGIS won’t know which area’s which!</p>
+<div class="figure align-default" id="id4">
+<img alt="Layer join dialogue box" src="../_images/spatial-join-dialogue.png" />
+<p class="caption"><span class="caption-text">Layer join dialogue box</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Select your csv file (‘Join layer’). If you have only loaded one data
+layer (as we have) QGIS should automatically detect it. Then complete
+the following:</p>
+<ul class="simple">
+<li><p>Join field: <code class="docutils literal notranslate"><span class="pre">GEOGRAPHY_CODE</span></code></p></li>
+<li><p>Target field: <code class="docutils literal notranslate"><span class="pre">code</span></code></p></li>
+<li><p>Tick <code class="docutils literal notranslate"><span class="pre">Joined</span> <span class="pre">fields</span></code> and select <code class="docutils literal notranslate"><span class="pre">GEOGRAPHY_NAME</span></code> and
+<code class="docutils literal notranslate"><span class="pre">OBS_VALUE</span></code></p></li>
+<li><p>Leave all other settings as their defaults</p></li>
+</ul>
+<div class="figure align-default" id="id5">
+<img alt="Add vector join dialogue" src="../_images/add-vector-join-dialogue.png" />
+<p class="caption"><span class="caption-text">Add vector join dialogue</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The values you need will differ depending on the files you use and the
+source you obtain them from, but generally you’re trying to match a code
+to a code If you end up needing to match place names you must ensure
+these match exactly or QGIS won’t join them (e.g. ‘City of Aberdeen’
+will not join to ‘Aberdeen, City of’).</p>
 </div>
 <div class="section" id="thematic-mapping">
 <h2>Thematic Mapping<a class="headerlink" href="#thematic-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Once the join is completed you can create a thematic map by modifying
-the ‘Style’ tab of the layer properties. I typically change ‘Single
+the ‘Symbology’ tab of the layer properties. I typically change ‘Single
 Symbol’ to ‘Graduated’ and selecting an appropriate colour gradient:</p>
-<figure id="attachment_1099" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png">https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png</a>&gt;`__</p>
-<figcaption class="caption wp-caption-text"><p>QGIS: Applying styles to layer</p>
-</figcaption></figure><p>The finished result should look something like this. If you want to
-reproduce this map you can obtain the <a class="reference external" href="http://www.philmikejones.net/wp-content/uploads/2014/05/master.csv">Townsend
-Scores</a>
-and <a class="reference external" href="http://www.philmikejones.net/wp-content/uploads/2014/05/sheffield-wards-2011.zip">shapefile map
-layer</a>.</p>
-<figure id="attachment_1101" class="thumbnail wp-caption aligncenter" style="width: 310px"><p>` &lt;<a class="reference external" href="http://philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011.pdf">http://philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011.pdf</a>&gt;`__</p>
-<figcaption class="caption wp-caption-text"><p>Sheffield Townsend Deprivation Scores 2011 – darker areas are more
-deprived</p>
-</figcaption></figure></div>
-<div class="section" id="sources">
-<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
-<p>The csv data is based on my analysis of the 2011 Census. The boundary
-data was obtained from the UK Data Service:</p>
-<p>Office for National Statistics, 2011 Census: Aggregate data (England and
-Wales) [computer file]. UK Data Service Census Support. Downloaded from:
-<a class="reference external" href="http://infuse.mimas.ac.uk">http://infuse.mimas.ac.uk</a>. This information is licensed under the terms
-of the Open Government Licence
-[<a class="reference external" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2</a>].</p>
-<p>Office for National Statistics, 2011 Census: Digitised Boundary Data
-(England and Wales) [computer file]. UK Data Service Census Support.
-Downloaded from: <a class="reference external" href="http://edina.ac.uk/census">http://edina.ac.uk/census</a></p>
+<p>The finished result should look something like this.</p>
 </div>
 </div>
 

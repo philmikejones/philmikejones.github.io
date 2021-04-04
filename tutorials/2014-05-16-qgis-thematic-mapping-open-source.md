@@ -21,57 +21,71 @@ Perhaps the most common function of GIS software, particularly in the social sci
 
 - Load the outline of the geographical area of interest.
 - Load data about the areas about a topic of interest.
-- &#8216;Join' the data to the boundary information using a unique key in both files.
+- 'Join' the data to the boundary information using a unique key in both files.
 - Set the shading of the map based on the joined dataset.
 
 This is easily achieved in QGIS.
+I'm using 2018 mid-year population estimates for English local authority districts and London boroughs (LADs) as an example.
+You can download the data and map and follow along from these sources (you'll need to extract the shapefile before you can use it):
+
+- https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip
+- http://www.nomisweb.co.uk/api/v01/dataset/NM_31_1.data.csv?geography=1811939329...1811939332,1811939334...1811939336,1811939338...1811939497,1811939499...1811939501,1811939503,1811939505...1811939507,1811939509...1811939517,1811939519,1811939520,1811939524...1811939570,1811939575...1811939599,1811939601...1811939628,1811939630...1811939634,1811939636...1811939647,1811939649,1811939655...1811939664,1811939667&date=latest&sex=7&age=0&measures=20100&select=geography_name,geography_code,obs_value
+
 
 ## Load a Vector (Map) Layer
 
-I use shapefiles as these appear to be the _de facto_ standard among GIS applications. Load a shapefile with SHIFT+CTRL+V or by clicking the &#8216;Add Vector Layer' icon (bottom left of this screenshot, looks like a &#8216;V'):
+I use shapefiles as these appear to be the _de facto_ standard among GIS applications.
+Load a shapefile with SHIFT+CTRL+V or by clicking the 'Add Vector Layer' icon (bottom left of this screenshot, looks like a 'V'):
 
 ![Add vector layer](../_static/img/add-vector-layer.png)
+
+Add the `england_lad_2011.shp` layer, leave the defaults, and press Add.
+If QGIS asks about using a fallback transformation use this; the difference in accuracy is 2m rather than 1m (so negligible for our purposes).
 
 
 ## Add Data
 
-To add data about the geography you've loaded &#8211; and join it to the shapefile &#8211; click &#8216;Add Delimited Text Layer' (icon looks like a comma). I'm assuming here you're using a text delimited file (probably comma delimited, like .csv) because this is the most common format data is shared in, or at least can be easily converted to. Other data formats are supported, but for now lets load a .csv:
+To add data about the geography you've loaded and join it to the shapefile click 'Add Delimited Text Layer' (icon looks like a comma).
 
-![Add delimited text (csv) layer](../_static/img/add-csv-layer.png) 
+![Add delimited text (csv) layer](../_static/img/add-csv-layer.png)
 
+Here we're using a text delimited file (comma delimited, or `.csv`) and this is a common format data is shared in (particularly for small amounts of data).
 You should get the following dialogue box:
 
 ![Delimited text dialogue box](../_static/img/delimited-text-dialogue.png)
 
-The main thing to remember when loading a .csv file is to tell QGIS if your file contains geometry data or not. Most of the time when I download .csv files relating to a geography (like LSOA) it contains the LSOA code for referencing, but the file doesn't include any geometry data per se. I would therefore select &#8216;No geometry (attribute only table)' from the dialogue box.
+The main thing to remember when loading a .csv file is to tell QGIS if your file contains geometry data or not.
+Here we've downloaded data that contains a geography code (a unique code for the LAD for joining purposes) but not actually geographical coordinates.
+Therefore make sure you select 'No geometry (attribute only table)' from the dialogue box.
 
-## &#8216;Joining' the Two
+## 'Joining' the Two
 
-Once the data is loaded, it's time to &#8216;join' it to the shapefile or other layer we loaded earlier. Right-click on the layer and press &#8216;Properties':
+Once the data is loaded it's time to 'join' it to the shapefile or other layer we loaded earlier.
+Right-click on the shapefile (geometry) layer and press 'Properties':
 
-From there, select Joins, then the green plus:<figure id="attachment_1098" class="thumbnail wp-caption aligncenter" style="width: 310px">
+From there, select Joins, then the green plus:
 
-[<img class="size-medium wp-image-1098" src="https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue-300x194.png?fit=300%2C194" alt="Joining in QGIS" srcset="https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png?w=929 929w, https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png?resize=300%2C194 300w, https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png?resize=768%2C497 768w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png?resize=660%2C427 660w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/join-dialogue.png)<figcaption class="caption wp-caption-text">QGIS: Joins dialogue</figcaption></figure> 
+![Layer join dialogue box](../_static/img/spatial-join-dialogue.png)
 
-Select your csv file (&#8216;Join layer'), the unique code you're using to join, which is probably an LSOA code or similar (&#8216;Join field'), and the target field in your vector layer. Like a key in a relational database, the codes for the join field and target layer must match exactly, or QGIS won't know which area's which!
+Select your csv file ('Join layer').
+If you have only loaded one data layer (as we have) QGIS should automatically detect it.
+Then complete the following:
+
+- Join field: `GEOGRAPHY_CODE`
+- Target field: `code`
+- Tick `Joined fields` and select `GEOGRAPHY_NAME` and `OBS_VALUE`
+- Leave all other settings as their defaults
+
+![Add vector join dialogue](../_static/img/add-vector-join-dialogue.png)
+
+The values you need will differ depending on the files you use and the source you obtain them from, but generally you're trying to match a code to a code
+If you end up needing to match place names you must ensure these match exactly or QGIS won't join them (e.g. 'City of Aberdeen' will not join to 'Aberdeen, City of').
+
 
 ## Thematic Mapping
 
-Once the join is completed you can create a thematic map by modifying the &#8216;Style' tab of the layer properties. I typically change &#8216;Single Symbol' to &#8216;Graduated' and selecting an appropriate colour gradient:<figure id="attachment_1099" class="thumbnail wp-caption aligncenter" style="width: 310px">
+Once the join is completed you can create a thematic map by modifying the 'Symbology' tab of the layer properties.
+I typically change 'Single Symbol' to 'Graduated' and selecting an appropriate colour gradient:
 
-[<img class="size-medium wp-image-1099" src="https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join-300x194.png?fit=300%2C194" alt="Producing a thematic map" srcset="https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png?w=929 929w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png?resize=300%2C194 300w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png?resize=768%2C497 768w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png?resize=660%2C427 660w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />](https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/thematic-map-from-join.png)<figcaption class="caption wp-caption-text">QGIS: Applying styles to layer</figcaption></figure> 
 
-The finished result should look something like this. If you want to reproduce this map you can obtain the [Townsend Scores](http://www.philmikejones.net/wp-content/uploads/2014/05/master.csv) and [shapefile map layer](http://www.philmikejones.net/wp-content/uploads/2014/05/sheffield-wards-2011.zip).<figure id="attachment_1101" class="thumbnail wp-caption aligncenter" style="width: 310px">
-
-[<img class="size-medium wp-image-1101" src="https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster-300x212.png?fit=300%2C212" alt="Sheffield thematic map (Townsend Deprivation Scores depicted)" srcset="https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?w=3507 3507w, https://i2.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?resize=300%2C212 300w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?resize=768%2C543 768w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?resize=1024%2C724 1024w, https://i1.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?resize=660%2C467 660w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?w=1296 1296w, https://i0.wp.com/philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011-raster.png?w=1944 1944w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />](http://philmikejones.me/wp-content/uploads/2014/05/sheffield-townsend-2011.pdf)<figcaption class="caption wp-caption-text">Sheffield Townsend Deprivation Scores 2011 &#8211; darker areas are more deprived</figcaption></figure> 
-
-## Sources
-
-The csv data is based on my analysis of the 2011 Census.
-The boundary data was obtained from the UK Data Service:
-
-Office for National Statistics, 2011 Census: Aggregate data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: <http://infuse.mimas.ac.uk>.
-This information is licensed under the terms of the Open Government Licence [http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2].
-
-Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file].
-UK Data Service Census Support. Downloaded from: <http://edina.ac.uk/census>
+The finished result should look something like this. 
