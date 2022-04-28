@@ -6,19 +6,22 @@
     <meta name="generator" content="Hugo 0.98.0" />
     <meta name="generator" content="Relearn 3.4.1&#43;tip">
     <meta name="description" content="">
+    <meta name="author" content="Phil Mike Jones">
     <title>Phil Mike Jones</title>
     <link rel="alternate" type="application/rss&#43;xml" href="/index.xml" title="Phil Mike Jones" />
     <link rel="alternate" type="application/json" href="/index.json" title="Phil Mike Jones" />
-    <link href="/css/nucleus.css?1651181735" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1651181735" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1651181735" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1651181735" rel="stylesheet">
-    <link href="/css/auto-complete.css?1651181735" rel="stylesheet">
-    <link href="/css/theme.css?1651181735" rel="stylesheet">
-    <link href="/css/theme-relearn-light.css?1651181735" rel="stylesheet" id="variant-style">
-    <link href="/css/variant.css?1651181735" rel="stylesheet">
-    <link href="/css/print.css?1651181735" rel="stylesheet" media="print">
-    <script src="/js/variant.js?1651181735"></script>
+    <link href="/css/nucleus.css?1651184387" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1651184387" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1651184387" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1651184387" rel="stylesheet">
+    <link href="/css/auto-complete.css?1651184387" rel="stylesheet">
+    <link href="/css/theme.css?1651184387" rel="stylesheet">
+    <link href="/css/theme-blue.css?1651184387" rel="stylesheet" id="variant-style">
+    <link href="/css/variant.css?1651184387" rel="stylesheet">
+    <link href="/css/print.css?1651184387" rel="stylesheet" media="print">
+    <link href="/css/foo.css?1651184387" rel="stylesheet">
+    <link href="/css/bar.css?1651184387" rel="stylesheet">
+    <script src="/js/variant.js?1651184387"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -32,9 +35,9 @@
       window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
       // some further base stuff
       var baseUriFull='https:\/\/philmikejones.github.io/';
-      variants.init( [ 'relearn-light' ] );
+      variants.init( [ 'blue' ] );
     </script>
-    <script src="/js/jquery.min.js?1651181735"></script>
+    <script src="/js/jquery.min.js?1651184387"></script>
   </head>
   <body class="mobile-support" data-url="/">
     <div id="body" class="default-animation">
@@ -42,11 +45,10 @@
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable">
         <div>
-          <div class="navigation">
-             <a class="nav nav-next" href="/about/" title="About"><i class="fas fa-chevron-right fa-fw"></i></a>
-          </div>
-          <div class="navigation">
-             <span class="nav nav-prev"><i class="fa fa-chevron-left fa-fw"></i></span>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/philmikejones/philmikejones.github.io/edit/master/content/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -167,9 +169,9 @@ While these tutorials are mostly a reminder for me, you&rsquo;re welcome to use 
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="/js/lunr.min.js?1651181735"></script>
-        <script src="/js/auto-complete.js?1651181735"></script>
-        <script src="/js/search.js?1651181735"></script>
+        <script src="/js/lunr.min.js?1651184387"></script>
+        <script src="/js/auto-complete.js?1651184387"></script>
+        <script src="/js/search.js?1651184387"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -203,7 +205,7 @@ While these tutorials are mostly a reminder for me, you&rsquo;re welcome to use 
                 <span>&nbsp;</span>
                 <div class="select-style">
                   <select id="select-variant" onchange="variants.changeVariant( this.value );">
-                    <option id="relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="blue" value="blue" selected>Blue</option>
                   </select>
                 </div>
                 <div class="select-clear"></div>
@@ -218,9 +220,19 @@ While these tutorials are mostly a reminder for me, you&rsquo;re welcome to use 
         </div>
       </div>
     </aside>
-    <script src="/js/clipboard.min.js?1651181735"></script>
-    <script src="/js/perfect-scrollbar.min.js?1651181735"></script>
-    <script src="/js/featherlight.min.js?1651181735"></script>
-    <script src="/js/theme.js?1651181735"></script>
+    <script src="/js/clipboard.min.js?1651184387"></script>
+    <script src="/js/perfect-scrollbar.min.js?1651184387"></script>
+    <script src="/js/featherlight.min.js?1651184387"></script>
+    <script src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+    <script>
+      function useSwagger( config ){
+        if( config.theme ){
+          var write_style = variants.findLoadedStylesheet( 'variant-style' );
+          write_style.setProperty( '--CONFIG-SWAGGER-theme', config.theme );
+        }
+      }
+      useSwagger( JSON.parse("{ \"theme\": \"light\" }") );
+    </script>
+    <script src="/js/theme.js?1651184387"></script>
   </body>
 </html>
