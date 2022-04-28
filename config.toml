@@ -6,4 +6,37 @@ theme = "hugo-theme-relearn"
 
 # For search functionality
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+  home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  alwaysopen = false  # expand menus?
+  editURL = "https://github.com/philmikejones/philmikejones.github.io/edit/master/content"
+  author = "Phil Mike Jones"
+  # Description of the site, will be used in meta information
+  # description = ""
+  # Shows a checkmark for visited pages on the menu
+  showVisitedLinks = false
+  disableBreadcrumb = false
+  # If set to true, hide table of contents menu in the header of all pages
+  disableToc = false
+  # If set to false, load the Mermaid module on every page regardless if a Mermaid shortcode or Mermaid codefence is present
+  disableMermaid = true
+  # If set to false, load the Swagger module on every page regardless if a Swagger shortcode is present
+  disableSwagger = false
+  # Specifies the remote location of the RapiDoc js
+  customSwaggerURL = "https://unpkg.com/rapidoc/dist/rapidoc-min.js"
+  # Initialization parameter for Swagger, see RapiDoc documentation
+  swaggerInitialize = "{ \"theme\": \"light\" }"
+  # Hide Next and Previous page buttons normally displayed full height beside content
+  disableNextPrev = true
+  # Order sections in menu by "weight" or "title". Default to "weight";
+  # this can be overridden in the pages frontmatter
+  ordersectionsby = "weight"
+  # Change default color scheme with a variant one. Eg. can be "red", "blue", "green" or an array like [ "blue", "green" ].
+  themeVariant = "blue"
+  # Provide a list of custom css files to load relative from the `static/` folder in the site root.
+  custom_css = ["css/foo.css", "css/bar.css"]
+  # Change the title separator. Default to "::".
+  titleSeparator = "-"
+  # If set to true, the menu in the sidebar will be displayed in a collapsible tree view.
+  collapsibleMenu = false
