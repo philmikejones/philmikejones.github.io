@@ -7,5 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Thu, 28 Apr 2022 21:58:31 +0100</lastBuildDate><atom:link href="https://philmikejones.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://philmikejones.github.io/about/</link>
+      <pubDate>Thu, 28 Apr 2022 22:33:14 +0100</pubDate>
+      <guid>https://philmikejones.github.io/about/</guid>
+      <description>Publications You can see my publications on my ORCiD profile.
+Specialisms  I specialise in quantitative and spatial data analysis. I use R, Python, and QGIS to analyse various spatial and non-spatial data sets. I&amp;rsquo;ve authored some packages, most notably rakeR for simulating spatial data.  Education PhD I have a PhD in human geography from the University of Sheffield (2018). My thesis is entitled, &amp;lsquo;A Spatial Microsimulation Analysis of Health Inequalities and Health Resilience&amp;rsquo;.</description>
+    </item>
   </channel>
 </rss>
