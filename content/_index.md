@@ -9,7 +9,7 @@ date: 2022-04-28T21:58:31+01:00
 I use R, Python, QGIS, and Linux in my work and over the years have written a series of reminders and tutorials to help me when I inevitably forget things.
 While these tutorials are mostly a reminder for me, you're welcome to use them if they're any help to you.
 
-{{< button href="https://github.com/thegeeklab/hugo-geekdoc" >}}Tutorials{{< /button >}}
+{{< button href="https://philmikejones.github.io/tutorials/" >}}Tutorials{{< /button >}}
 
 I try to ensure they're as accurate as possible and hope they're helpful, but make no guarantees that they're correct or up--to--date; use at your own risk.
 
