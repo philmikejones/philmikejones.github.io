@@ -1,12 +1,20 @@
 ---
 title: "Phil Mike Jones"
-date: 2022-04-28T21:58:31+01:00
+date: 2025-05-31
 ---
+
+
+## About me
+
+I'm a university lecturer in the UK.
+My PhD is in Human Geography.
+
+[About me](about/index.html)
 
 
 ## Tutorials
 
-I use R, Python, QGIS, and Linux in my work and over the years have written a series of reminders and tutorials to help me when I inevitably forget things.
+I use R, Python, QGIS, and Linux for a lot of my work and over the years I've written a series of reminders and tutorials to help me when I inevitably forget things.
 While these tutorials are mostly a reminder for me, you're welcome to use them if they're any help to you.
 
 {{< button href="https://philmikejones.github.io/tutorials/" >}}Tutorials{{< /button >}}
@@ -19,9 +27,3 @@ The tutorials are licensed as [**CC BY-NC**](https://creativecommons.org/license
 ## Statistics tutorials
 
 As well as the tutorials here my [stats101](https://philmikejones.github.io/stats101/) website might also be useful if you want an introduction to statistics.
-
-## About me
-
-I'm a geographer.
-
-[About me](about/index.html)

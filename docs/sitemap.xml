@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://philmikejones.github.io/tutorials/</loc>
+    <loc>https://philmikejones.github.io/tutorials/index.html</loc>
   </url>
   <url>
-    <loc>https://philmikejones.github.io/about/</loc>
+    <loc>https://philmikejones.github.io/index.html</loc>
+    <lastmod>2025-05-31T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://philmikejones.github.io/about/index.html</loc>
     <lastmod>2022-04-28T22:33:14+01:00</lastmod>
   </url>
   <url>
-    <loc>https://philmikejones.github.io/</loc>
-    <lastmod>2022-04-28T21:58:31+01:00</lastmod>
+    <loc>https://philmikejones.github.io/categories/index.html</loc>
   </url>
   <url>
-    <loc>https://philmikejones.github.io/categories/</loc>
-  </url>
-  <url>
-    <loc>https://philmikejones.github.io/tags/</loc>
+    <loc>https://philmikejones.github.io/tags/index.html</loc>
   </url>
 </urlset>

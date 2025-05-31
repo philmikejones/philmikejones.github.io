@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on Phil Mike Jones</title>
-    <link>https://philmikejones.github.io/about/</link>
-    <description>Recent content in About on Phil Mike Jones</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>About - Phil Mike Jones</title>
+    <link>https://philmikejones.github.io/about/index.html</link>
+    <description>Publications You can see my publications on my ORCiD profile.&#xA;Specialisms I specialise in quantitative and spatial data analysis. I use R, Python, and QGIS to analyse various spatial and non-spatial data sets. I’ve authored some packages, most notably rakeR for simulating spatial data. Education PhD I have a PhD in human geography from the University of Sheffield (2018). My thesis is entitled, ‘A Spatial Microsimulation Analysis of Health Inequalities and Health Resilience’. I was supervised by Professors Dimitris Ballas and Liddy Goyder, with support from Doncaster Metropolitan Borough Council, especially Laurie Mott.</description>
+    <generator>Hugo</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 28 Apr 2022 22:33:14 +0100</lastBuildDate><atom:link href="https://philmikejones.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://philmikejones.github.io/about/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
